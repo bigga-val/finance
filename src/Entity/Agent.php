@@ -33,7 +33,7 @@ class Agent
     private $genre;
 
     /**
-     * @ORM\OneToOne(targetEntity=fonction::class, cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=Fonction::class, cascade={"persist", "remove"})
      */
     private $fonction;
 

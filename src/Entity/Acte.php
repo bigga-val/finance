@@ -18,7 +18,7 @@ class Acte
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=service::class, inversedBy="actes")
+     * @ORM\ManyToOne(targetEntity=Service::class, inversedBy="actes")
      */
     private $service;
 

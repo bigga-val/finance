@@ -18,12 +18,12 @@ class PaiementActe
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=patient::class)
+     * @ORM\ManyToOne(targetEntity=Patient::class)
      */
     private $patient;
 
     /**
-     * @ORM\ManyToOne(targetEntity=acte::class)
+     * @ORM\ManyToOne(targetEntity=Acte::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $acte;
@@ -34,7 +34,7 @@ class PaiementActe
     private $date_paiement;
 
     /**
-     * @ORM\ManyToOne(targetEntity=user::class)
+     * @ORM\ManyToOne(targetEntity=User::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;

@@ -18,7 +18,7 @@ class User
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity=agent::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Agent::class, cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $agent;
