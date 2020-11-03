@@ -27,7 +27,7 @@
             <td>{{ patient.nomComplet }}</td>
             <td>{{ patient.genre }}</td>
             <td>{{ patient.type }}</td>
-            <td><a href="{{ path('new_paiement_acte') }}">Payer fiche</a></td>
+            <td><a href="{{ path('new_paiement_acte',{ 'id': patient.id}) }}">Payer fiche</a></td>
         </tr>
     {% endfor %}
         </tbody>

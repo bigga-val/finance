@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20201028230308 extends AbstractMigration
+final class Version20201103113609 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -20,12 +20,14 @@ final class Version20201028230308 extends AbstractMigration
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE agent DROP INDEX UNIQ_268B9C9D57889920, ADD INDEX IDX_268B9C9D57889920 (fonction_id)');
+        $this->addSql('ALTER TABLE patient ADD CONSTRAINT FK_1ADAD7EBB03A8386 FOREIGN KEY (created_by_id) REFERENCES user (id)');
+        $this->addSql('CREATE INDEX IDX_1ADAD7EBB03A8386 ON patient (created_by_id)');
     }
 
     public function down(Schema $schema) : void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE agent DROP INDEX IDX_268B9C9D57889920, ADD UNIQUE INDEX UNIQ_268B9C9D57889920 (fonction_id)');
+        $this->addSql('ALTER TABLE patient DROP FOREIGN KEY FK_1ADAD7EBB03A8386');
+        $this->addSql('DROP INDEX IDX_1ADAD7EBB03A8386 ON patient');
     }
 }

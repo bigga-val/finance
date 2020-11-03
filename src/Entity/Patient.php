@@ -37,6 +37,22 @@ class Patient
      */
     private $type;
 
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $lieu_naissance;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $date_naissance;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $createdBy;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +102,42 @@ class Patient
     public function setType(string $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getLieuNaissance(): ?string
+    {
+        return $this->lieu_naissance;
+    }
+
+    public function setLieuNaissance(string $lieu_naissance): self
+    {
+        $this->lieu_naissance = $lieu_naissance;
+
+        return $this;
+    }
+
+    public function getDateNaissance(): ?\DateTimeInterface
+    {
+        return $this->date_naissance;
+    }
+
+    public function setDateNaissance(\DateTimeInterface $date_naissance): self
+    {
+        $this->date_naissance = $date_naissance;
+
+        return $this;
+    }
+
+    public function getCreatedBy(): ?User
+    {
+        return $this->createdBy;
+    }
+
+    public function setCreatedBy(?User $createdBy): self
+    {
+        $this->createdBy = $createdBy;
 
         return $this;
     }

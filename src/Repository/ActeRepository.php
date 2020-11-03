@@ -47,4 +47,14 @@ class ActeRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findActeFiche(){
+        $queryBuilder = $this->createQueryBuilder('a')
+            ->where('a.designation = :d')
+            ->setParameter('d', 'fiche');
+        $query = $queryBuilder->getQuery();
+        $result = $query->setMaxResults(1)->getOneOrNullResult();
+        return $result;
+    }
+    
 }
