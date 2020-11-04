@@ -9,7 +9,7 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Hello {{ controller_name }}! ✅ </h1>
 
     {# {{ dump(patients) }} #}
     <table class="table table-hover">
@@ -27,7 +27,12 @@
             <td>{{ patient.nomComplet }}</td>
             <td>{{ patient.genre }}</td>
             <td>{{ patient.type }}</td>
-            <td><a href="{{ path('new_paiement_acte',{ 'id': patient.id}) }}">Payer fiche</a></td>
+            <td>{% if is_granted('ROLE_USER') %}
+                    <a href="{{ path('new_paiement_acte',{ 'id': patient.id}) }}">Payer fiche</a>
+                {% else %}
+                    <a href="{{ path('new_paiement_acte',{ 'id': patient.id}) }}">Non Authorisé</a>
+                {% endif %}
+            </td>
         </tr>
     {% endfor %}
         </tbody>

@@ -2,20 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cceb1cb2-77f2-4107-a902-10e88007c4dd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/_navbar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201028085912.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201028230308.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ActeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ActeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/PaiementActeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PaiementActeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Patient.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Patient.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ActeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ActeRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/paiement_acte/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/paiement_acte/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/patient/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patient/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -143,8 +134,10 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -156,10 +149,18 @@
       <updated>1604391918212</updated>
       <workItem from="1604391919604" duration="724000" />
       <workItem from="1604399976647" duration="1952000" />
+      <workItem from="1604496699706" duration="1822000" />
+      <workItem from="1604499554028" duration="2526000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="184" y="8" key="SettingsEditor" timestamp="1604488238562">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="184" y="8" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1604488238562" />
   </component>
 </project>

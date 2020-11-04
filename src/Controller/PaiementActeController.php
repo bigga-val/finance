@@ -50,7 +50,7 @@ class PaiementActeController extends AbstractController
         $entityManager->persist($paiement);
         $form = $this->createForm(PaiementActeType::class, $paiement);
         $entityManager->persist($paiement);
-        $entityManager->flush();
+        // $entityManager->flush();
         // $form->handleRequest($request);
         return $this->render('paiement_acte/index.html.twig', [
             'controller_name' => 'PaiementActeController',
