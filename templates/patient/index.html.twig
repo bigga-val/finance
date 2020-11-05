@@ -14,19 +14,25 @@
     {# {{ dump(patients) }} #}
     <table class="table table-hover">
         <thead class="bg-dark">
+            <th>#</th>
             <th>Fiche</th>
-            <th>Nom & Postnom</th>
+            <th>Nom</th>
+            <th>Postnom</th>
             <th>Genre</th>
             <th>Type</th>
             <th>Action</th>
         </thead>
         <tbody>
+        {% with { i : 1 } %}
     {% for patient in patients %}
+
         <tr>
+            <td>{{ i }}</td>
             <td>{{ patient.numeroFiche }}</td>
-            <td>{{ patient.nomComplet }}</td>
+            <td>{{ patient.nom }}</td>
+            <td>{{ patient.postnom }}</td>
             <td>{{ patient.genre }}</td>
-            <td>{{ patient.type }}</td>
+            <td>{{ patient.isAbonne ? 'Abonne':'Privé' }}</td>
             <td>{% if is_granted('ROLE_USER') %}
                     <a href="{{ path('new_paiement_acte',{ 'id': patient.id}) }}">Payer fiche</a>
                 {% else %}
@@ -34,9 +40,13 @@
                 {% endif %}
             </td>
         </tr>
+        {% set i = i+1 %}
     {% endfor %}
+
+        {% endwith %}
         </tbody>
     </table>
 </div>
 {% endblock %}
+
 

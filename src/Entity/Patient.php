@@ -17,13 +17,10 @@ class Patient
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $nom_complet;
+
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=20, unique=true)
      */
     private $numero_fiche;
 
@@ -32,10 +29,6 @@ class Patient
      */
     private $genre;
 
-    /**
-     * @ORM\Column(type="string", length=20)
-     */
-    private $type;
 
     /**
      * @ORM\Column(type="string", length=50)
@@ -53,22 +46,47 @@ class Patient
      */
     private $createdBy;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $is_abonne;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $nom;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $postnom;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $active;
+
+    /**
+     * @ORM\Column(type="string", length=20)
+     */
+    private $telephone;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $adresse;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Abonnement::class, inversedBy="patient")
+     */
+    private $abonnement;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getNomComplet(): ?string
-    {
-        return $this->nom_complet;
-    }
 
-    public function setNomComplet(string $nom_complet): self
-    {
-        $this->nom_complet = $nom_complet;
-
-        return $this;
-    }
 
     public function getNumeroFiche(): ?string
     {
@@ -90,18 +108,6 @@ class Patient
     public function setGenre(string $genre): self
     {
         $this->genre = $genre;
-
-        return $this;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(string $type): self
-    {
-        $this->type = $type;
 
         return $this;
     }
@@ -138,6 +144,90 @@ class Patient
     public function setCreatedBy(?User $createdBy): self
     {
         $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    public function getIsAbonne(): ?bool
+    {
+        return $this->is_abonne;
+    }
+
+    public function setIsAbonne(bool $is_abonne): self
+    {
+        $this->is_abonne = $is_abonne;
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getPostnom(): ?string
+    {
+        return $this->postnom;
+    }
+
+    public function setPostnom(string $postnom): self
+    {
+        $this->postnom = $postnom;
+
+        return $this;
+    }
+
+    public function getActive(): ?bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): self
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    public function getTelephone(): ?string
+    {
+        return $this->telephone;
+    }
+
+    public function setTelephone(string $telephone): self
+    {
+        $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(string $adresse): self
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getAbonnement(): ?Abonnement
+    {
+        return $this->abonnement;
+    }
+
+    public function setAbonnement(?Abonnement $abonnement): self
+    {
+        $this->abonnement = $abonnement;
 
         return $this;
     }

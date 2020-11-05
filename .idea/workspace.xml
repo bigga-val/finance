@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cceb1cb2-77f2-4107-a902-10e88007c4dd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/_navbar.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/patient/new_patient.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/PaiementActeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PaiementActeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PatientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PatientController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Patient.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Patient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/PatientType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/_navbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_navbar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/paiement_acte/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/paiement_acte/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/patient/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patient/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -132,6 +136,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="full.screen.before.presentation.mode" value="false" />
@@ -150,7 +155,8 @@
       <workItem from="1604391919604" duration="724000" />
       <workItem from="1604399976647" duration="1952000" />
       <workItem from="1604496699706" duration="1822000" />
-      <workItem from="1604499554028" duration="2526000" />
+      <workItem from="1604499554028" duration="2995000" />
+      <workItem from="1604520239579" duration="12871000" />
     </task>
     <servers />
   </component>
@@ -162,5 +168,16 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="8" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1604488238562" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/Form/PatientType.php</url>
+          <line>4</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
