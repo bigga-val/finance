@@ -1,12 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {{ form_start(form) }}
+    {{ form_row(form._token) }}
+    {{ form_errors(form) }}
     <div class="row">
+
         <div class="col-md-6">
-            <div>
-                {{ form_start(form) }}
-                {{ form_row(form._token) }}
-                {{ form_errors(form) }}
+
                 <div>
                     {{ form_label(form.nom, "Nom du patiennt") }}
                     {{ form_errors(form.nom) }}
@@ -33,6 +34,10 @@
         </div>
         <div class="col-md-6">
             <div>
+                {{ form_widget(form.is_abonne) }}
+                {{ form_label(form.is_abonne) }}
+            </div>
+            <div>
                 {{ form_label(form.telephone, "Téléphone") }}
                 {{ form_errors(form.telephone) }}
                 <div>{{ form_widget(form.telephone) }}</div>
@@ -47,10 +52,58 @@
                 {{ form_errors(form.genre) }}
                 <div>{{ form_widget(form.genre) }}</div>
             </div>
-            <div>
-                <div>{{ form_widget(form.save) }}</div>
-            </div>
-            {{ form_end(form) }}
         </div>
     </div>
+    <div  id="formulaire_abonne" class="row">
+        <!--div class="col-md-6">
+            <div>
+                {{ form_label(abonne.matricule, "Matricule agent") }}
+                {{ form_errors(abonne.matricule) }}
+                <div>{{ form_widget(abonne.matricule) }}</div>
+            </div>
+            <div>
+                {{ form_label(abonne.profession, "profession") }}
+                {{ form_errors(abonne.profession) }}
+                <div>{{ form_widget(abonne.profession) }}</div>
+            </div>
+            <div>
+                {{ form_label(abonne.nom, "Nom Agent") }}
+                {{ form_errors(abonne.nom) }}
+                <div>{{ form_widget(abonne.nom) }}</div>
+            </div>
+            <div>
+                {{ form_label(abonne.postnom, "Postnom Agent") }}
+                {{ form_errors(abonne.postnom) }}
+                <div>{{ form_widget(abonne.postnom) }}</div>
+            </div>
+        </div-->
+        <!--div class="col-md-6">
+            <div>
+                {{ form_label(abonne.societe, "Societe") }}
+                {{ form_errors(abonne.societe) }}
+                <div>{{ form_widget(abonne.societe) }}</div>
+            </div>
+            <div>
+                {{ form_label(abonne.genre, "Genre") }}
+                {{ form_errors(abonne.genre) }}
+                <div>{{ form_widget(abonne.genre) }}</div>
+            </div>
+            <div>
+                {{ form_label(abonne.telephone, "Telephone") }}
+                {{ form_errors(abonne.telephone) }}
+                <div>{{ form_widget(abonne.telephone) }}</div>
+            </div>
+
+        </div-->
+
+    </div>
+    <div>{{ form_widget(form.save) }}</div>
+    {{ form_end(form) }}
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/jquery.js') }}"></script>
+    <script src="{{ asset('assets/js/show_abonne_form.js') }}"></script>
 {% endblock %}

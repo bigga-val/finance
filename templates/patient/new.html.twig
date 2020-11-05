@@ -1,0 +1,177 @@
+ab{% include "_extension/sidebar.html.twig" %}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Nouveau Patient</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                        <li class="breadcrumb-item active">Nouveau Patient</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- /.col -->
+            <div class="container-fluid">
+                <!-- /.card -->
+                <div class="card card-primary card-outline">
+                    <div class="card-body">
+                        <ul class="nav nav-tabs" id="custom-content-above-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="custom-content-above-home-tab" data-toggle="pill" href="#custom-content-above-home" role="tab" aria-controls="custom-content-above-home" aria-selected="true">Privé</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="custom-content-above-profile-tab" data-toggle="pill" href="#custom-content-above-profile" role="tab" aria-controls="custom-content-above-profile" aria-selected="false">Abonné</a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content" id="custom-content-above-tabContent">
+                            <div class="tab-pane fade show active" id="custom-content-above-home" role="tabpanel" aria-labelledby="custom-content-above-home-tab">
+                                <div class="container">
+                                    <form method="post">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('new_patient') }}">
+                                        <div class="tab-custom-content">
+                                            <p class="lead mb-1">Informations du patient</p>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="text" name="nom_patient" class="form-control" placeholder="Nom Patient">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" name="postnom_patient" class="form-control" placeholder="Postnom Patient">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" name="lieu_naissance" class="form-control" placeholder="Lieu de naissance">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="date" name="date_naissance" class="form-control" placeholder="Date de Naissance">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="form-check-inline">
+                                                        <label class="form-check-label">
+                                                            <input type="radio" class="form-check-input" name="genre">Homme
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check-inline">
+                                                        <label class="form-check-label">
+                                                            <input type="radio" class="form-check-input" name="genre">Femme
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" name="adresse_patient" class="form-control" placeholder="Adresse">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" name="telephone_patient" class="form-control" placeholder="Telephone">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="submit" class="btn btn-success" value="Enregistrer">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="custom-content-above-profile" role="tabpanel" aria-labelledby="custom-content-above-profile-tab">
+
+                                    <div class="tab-custom-content">
+                                        <p class="lead mb-1">Informations du bon</p>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" name="numero_bon" class="form-control" placeholder="Numero bon">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" name="matricule_bon" class="form-control" placeholder="Numero Matricule">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" name="nom_agent" class="form-control" placeholder="Nom & Postnom Agent">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" name="nom_societe" class="form-control" placeholder="Societe">
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+
+                                        </div>
+                                    </div>
+                                    <div class="tab-custom-content">
+                                        <p class="lead mb-1">Informations du patient</p>
+                                    </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="nom_patient" class="form-control" placeholder="Nom Patient">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name="postnom_patient" class="form-control" placeholder="Postnom Patient">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name="lieu_naissance" class="form-control" placeholder="Lieu de naissance">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="date" name="date_naissance" class="form-control" placeholder="Date de Naissance">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="form-check-inline">
+                                                <label class="form-check-label">
+                                                    <input type="radio" class="form-check-input" name="genre">Femme
+                                                </label>
+                                            </div>
+                                            <div class="form-check-inline">
+                                                <label class="form-check-label">
+                                                    <input type="radio" class="form-check-input" name="genre">Homme
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name="adresse_patient" class="form-control" placeholder="Adresse">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name="telephone_patient" class="form-control" placeholder="Telephone">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" class="btn btn-success" value="Enregistrer">
+                                        </div>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.card -->
+            </div>
+
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+
+    <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+</div>
+<!-- /.content-wrapper -->
+{% include "/_extension/footer.html.twig" %}
+

@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Patient;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -29,6 +30,10 @@ class PatientType extends AbstractType
             ->add('postnom')
             ->add('telephone')
             ->add('adresse')
+            ->add('is_abonne', CheckboxType::class, [
+                'label' => 'Abonné',
+                'required' => false,
+            ])
             //->add('active')
             //->add('createdBy')
             ->add('save', SubmitType::class, ['label' => 'Ajouter Patient et Payer fiche'])

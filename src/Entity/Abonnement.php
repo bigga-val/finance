@@ -29,20 +29,6 @@ class Abonnement
      */
     private $matricule;
 
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $profession;
-
-    /**
-     * @ORM\Column(type="string", length=20)
-     */
-    private $nom;
-
-    /**
-     * @ORM\Column(type="string", length=20)
-     */
-    private $postnom;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -50,14 +36,25 @@ class Abonnement
     private $societe;
 
     /**
-     * @ORM\Column(type="string", length=1)
+     * @ORM\Column(type="boolean")
      */
-    private $genre;
+    private $active;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=true)
+     * @ORM\Column(type="string", length=30)
      */
-    private $telephone;
+    private $nom_complet;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    private $numero_bon;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=user::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $created_by;
 
     public function __construct()
     {
@@ -111,42 +108,6 @@ class Abonnement
         return $this;
     }
 
-    public function getProfession(): ?string
-    {
-        return $this->profession;
-    }
-
-    public function setProfession(string $profession): self
-    {
-        $this->profession = $profession;
-
-        return $this;
-    }
-
-    public function getNom(): ?string
-    {
-        return $this->nom;
-    }
-
-    public function setNom(string $nom): self
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
-
-    public function getPostnom(): ?string
-    {
-        return $this->postnom;
-    }
-
-    public function setPostnom(string $postnom): self
-    {
-        $this->postnom = $postnom;
-
-        return $this;
-    }
-
     public function getSociete(): ?string
     {
         return $this->societe;
@@ -159,26 +120,52 @@ class Abonnement
         return $this;
     }
 
-    public function getGenre(): ?string
+
+
+    public function getActive(): ?bool
     {
-        return $this->genre;
+        return $this->active;
     }
 
-    public function setGenre(string $genre): self
+    public function setActive(bool $active): self
     {
-        $this->genre = $genre;
+        $this->active = $active;
 
         return $this;
     }
 
-    public function getTelephone(): ?string
+    public function getNomComplet(): ?string
     {
-        return $this->telephone;
+        return $this->nom_complet;
     }
 
-    public function setTelephone(?string $telephone): self
+    public function setNomComplet(string $nom_complet): self
     {
-        $this->telephone = $telephone;
+        $this->nom_complet = $nom_complet;
+
+        return $this;
+    }
+
+    public function getNumeroBon(): ?string
+    {
+        return $this->numero_bon;
+    }
+
+    public function setNumeroBon(string $numero_bon): self
+    {
+        $this->numero_bon = $numero_bon;
+
+        return $this;
+    }
+
+    public function getCreatedBy(): ?user
+    {
+        return $this->created_by;
+    }
+
+    public function setCreatedBy(?user $created_by): self
+    {
+        $this->created_by = $created_by;
 
         return $this;
     }

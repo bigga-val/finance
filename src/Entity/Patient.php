@@ -20,7 +20,7 @@ class Patient
 
 
     /**
-     * @ORM\Column(type="string", length=20, unique=true)
+     * @ORM\Column(type="string", length=20)
      */
     private $numero_fiche;
 
@@ -77,16 +77,14 @@ class Patient
     private $adresse;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Abonnement::class, inversedBy="patient")
+     * @ORM\Column(type="datetime")
      */
-    private $abonnement;
+    private $created_at;
 
     public function getId(): ?int
     {
         return $this->id;
     }
-
-
 
     public function getNumeroFiche(): ?string
     {
@@ -220,14 +218,14 @@ class Patient
         return $this;
     }
 
-    public function getAbonnement(): ?Abonnement
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->abonnement;
+        return $this->created_at;
     }
 
-    public function setAbonnement(?Abonnement $abonnement): self
+    public function setCreatedAt(\DateTimeInterface $created_at): self
     {
-        $this->abonnement = $abonnement;
+        $this->created_at = $created_at;
 
         return $this;
     }
