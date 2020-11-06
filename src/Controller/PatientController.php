@@ -133,22 +133,61 @@ class PatientController extends AbstractController
                 $patient = new Patient();
                 $r = !empty($data['nom_patient'])?$data['nom_patient'][0]:'r';
                 $l = !empty($data['postnom_patient'])?$data['postnom_patient'][0]:'l';
-                $patient->setTelephone($data['telephone_patient'])
-                    ->setActive(true)
-                    ->setIsAbonne(false)
-                    ->setCreatedBy($this->getUser())
-                    ->setCreatedAt(new \DateTime('now'))
-                    ->setGenre($data['genre'])
-                    ->setAdresse($data['adresse_patient'])
+                if(!isset($data['numero_bon']) || !isset($data['is_abonne'])){
+                    $patient->setTelephone($data['telephone_patient'])
+                        ->setActive(true)
+                        ->setIsAbonne(false)
+                        ->setCreatedBy($this->getUser())
+                        ->setCreatedAt(new \DateTime('now'))
+                        ->setGenre($data['genre'])
+                        ->setAdresse($data['adresse_patient'])
+                        ->setLieuNaissance($data['lieu_naissance'])
+                        ->setDateNaissance(new \DateTime($data['date_naissance']))
+                        ->setNom($data['nom_patient'])
+                        ->setPostnom($data['postnom_patient'])
+                        ->setNumeroFiche('M-'.$r.$l.random_int(0, 5000));
+                    $entityManager->persist($patient);
+                    $entityManager->flush();
+                    $this->addFlash(
+                        'succes', 'Patient enregistré avec succès'
+                    );
+                    return $this->redirectToRoute('patient');
+                }elseif (isset($data['numero_bon']) || isset($data['is_abonne'])){
+                    //informations du patient abonne
+                    $patient->setTelephone($data['telephone_patient'])
+                        ->setActive(true)
+                        ->setIsAbonne(true)
+                        ->setCreatedBy($this->getUser())
+                        ->setCreatedAt(new \DateTime('now'))
+                        ->setGenre($data['genre'])
+                        ->setAdresse($data['adresse_patient'])
+                        ->setLieuNaissance($data['lieu_naissance'])
+                        ->setDateNaissance(new \DateTime($data['date_naissance']))
+                        ->setNom($data['nom_patient'])
+                        ->setPostnom($data['postnom_patient'])
+                        ->setNumeroFiche('M-'.$r.$l.random_int(0, 5000));
+                    $entityManager->persist($patient);
 
-                    ->setLieuNaissance($data['lieu_naissance'])
-                    ->setDateNaissance(new \DateTime($data['date_naissance']))
-                    ->setNom($data['nom_patient'])
-                    ->setPostnom($data['postnom_patient'])
-                    ->setNumeroFiche('M-'.$r.$l.random_int(0, 5000));
-                $entityManager->persist($patient);
-                $entityManager->flush();
-                return $this->redirectToRoute('patient');
+                    //informations du bon d'abonne
+                    $abonnement = new Abonnement();
+                    $abonnement->setNumeroBon($data['numero_bon'])
+                        ->setNomComplet($data['nom_agent'])
+                        ->setMatricule($data['matricule_bon'])
+                        ->setCreatedBy($this->getUser())
+                        ->setCreatedAt(new \DateTime('now'))
+                        ->setActive(true)
+                        ->setSociete($data['nom_societe'])
+                        ->setPatient($patient);
+                    $entityManager->persist($abonnement);
+                    $entityManager->flush();
+                    $this->addFlash(
+                        'succes', 'Patient enregistré avec succès'
+                    );
+                    return $this->redirectToRoute('patient');
+                }else{
+                    echo "rien";
+                }
+
             }
         }
         return $this->render("patient/new.html.twig");

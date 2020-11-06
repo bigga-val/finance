@@ -19,10 +19,7 @@ class Abonnement
      */
     private $id;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Patient::class, mappedBy="abonnement")
-     */
-    private $patient;
+
 
     /**
      * @ORM\Column(type="string", length=10)
@@ -56,45 +53,24 @@ class Abonnement
      */
     private $created_by;
 
-    public function __construct()
-    {
-        $this->patient = new ArrayCollection();
-    }
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $created_at;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Patient::class, cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $patient;
+
+
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return Collection|Patient[]
-     */
-    public function getPatient(): Collection
-    {
-        return $this->patient;
-    }
-
-    public function addPatient(Patient $patient): self
-    {
-        if (!$this->patient->contains($patient)) {
-            $this->patient[] = $patient;
-            $patient->setAbonnement($this);
-        }
-
-        return $this;
-    }
-
-    public function removePatient(Patient $patient): self
-    {
-        if ($this->patient->removeElement($patient)) {
-            // set the owning side to null (unless already changed)
-            if ($patient->getAbonnement() === $this) {
-                $patient->setAbonnement(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getMatricule(): ?string
     {
@@ -166,6 +142,30 @@ class Abonnement
     public function setCreatedBy(?user $created_by): self
     {
         $this->created_by = $created_by;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $created_at): self
+    {
+        $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getPatient(): ?Patient
+    {
+        return $this->patient;
+    }
+
+    public function setPatient(Patient $patient): self
+    {
+        $this->patient = $patient;
 
         return $this;
     }

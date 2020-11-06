@@ -1,4 +1,4 @@
-ab{% include "_extension/sidebar.html.twig" %}
+{% include "_extension/sidebar.html.twig" %}
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -39,6 +39,7 @@ ab{% include "_extension/sidebar.html.twig" %}
                         <div class="tab-content" id="custom-content-above-tabContent">
                             <div class="tab-pane fade show active" id="custom-content-above-home" role="tabpanel" aria-labelledby="custom-content-above-home-tab">
                                 <div class="container">
+                                    {# formulaire du patient privé #}
                                     <form method="post">
                                         <input type="hidden" name="_token" value="{{ csrf_token('new_patient') }}">
                                         <div class="tab-custom-content">
@@ -53,22 +54,23 @@ ab{% include "_extension/sidebar.html.twig" %}
                                                     <input type="text" name="postnom_patient" class="form-control" placeholder="Postnom Patient">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="text" name="lieu_naissance" class="form-control" placeholder="Lieu de naissance">
+                                                    <input type="text" name="lieu_naissance" class="form-control" placeholder="Lieu de naissances">
                                                 </div>
                                                 <div class="form-group">
                                                     <input type="date" name="date_naissance" class="form-control" placeholder="Date de Naissance">
+                                                    <input type="hidden" name="is_abonne" value="true">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <div class="form-check-inline">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="genre">Homme
+                                                            <input type="radio" class="form-check-input" name="genre" value="M">Homme
                                                         </label>
                                                     </div>
                                                     <div class="form-check-inline">
                                                         <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="genre">Femme
+                                                            <input type="radio" class="form-check-input" name="genre" value="F">Femme
                                                         </label>
                                                     </div>
                                                 </div>
@@ -83,11 +85,13 @@ ab{% include "_extension/sidebar.html.twig" %}
                                                 </div>
                                             </div>
                                         </div>
-
+                                    </form>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="custom-content-above-profile" role="tabpanel" aria-labelledby="custom-content-above-profile-tab">
-
+                                {# formulaire pour abonne #}
+                                <form method="post">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('new_patient') }}">
                                     <div class="tab-custom-content">
                                         <p class="lead mb-1">Informations du bon</p>
                                     </div>
@@ -133,12 +137,12 @@ ab{% include "_extension/sidebar.html.twig" %}
                                         <div class="form-group">
                                             <div class="form-check-inline">
                                                 <label class="form-check-label">
-                                                    <input type="radio" class="form-check-input" name="genre">Femme
+                                                    <input type="radio" class="form-check-input" name="genre" value="F">Femme
                                                 </label>
                                             </div>
                                             <div class="form-check-inline">
                                                 <label class="form-check-label">
-                                                    <input type="radio" class="form-check-input" name="genre">Homme
+                                                    <input type="radio" class="form-check-input" name="genre" value="H">Homme
                                                 </label>
                                             </div>
                                         </div>

@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% include "_extension/sidebar.html.twig" %}
 
 {% block title %}Hello PatientController!{% endblock %}
 
@@ -9,18 +9,28 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅ </h1>
+    {% for message in app.flashes('notice') %}
+        <button type="button" class="btn btn-success toastsDefaultSuccess">
+            {{ message }}
+        </button>
+
+    {% endfor %}
+    <h1>liste des patients </h1>
 
     {# {{ dump(patients) }} #}
     <table class="table table-hover">
-        <thead class="bg-dark">
+        <thead class="bg-primary">
             <th>#</th>
             <th>Fiche</th>
             <th>Nom</th>
             <th>Postnom</th>
             <th>Genre</th>
+            <th>Date Naissance</th>
+            <th>Telephone</th>
+            <th>Date Enregistrement</th>
             <th>Type</th>
-            <th>Action</th>
+            <th>Actions</th>
+            <!--th>Action</th-->
         </thead>
         <tbody>
         {% with { i : 1 } %}
@@ -32,12 +42,20 @@
             <td>{{ patient.nom }}</td>
             <td>{{ patient.postnom }}</td>
             <td>{{ patient.genre }}</td>
+            <td>{{ patient.dateNaissance|date('d-m-Y') }}</td>
+            <td>{{ patient.telephone }}</td>
+            <td>{{ patient.createdAt|date('d-m-Y') }}</td>
             <td>{{ patient.isAbonne ? 'Abonne':'Privé' }}</td>
+            {#
             <td>{% if is_granted('ROLE_USER') %}
                     <a href="{{ path('new_paiement_acte',{ 'id': patient.id}) }}">Payer fiche</a>
                 {% else %}
                     <a href="{{ path('new_paiement_acte',{ 'id': patient.id}) }}">Non Authorisé</a>
                 {% endif %}
+            </td> #}
+            <td>
+                <i class="fa fa-edit text-primary"></i>
+                <i class="fa fa-trash text-danger"></i>
             </td>
         </tr>
         {% set i = i+1 %}
