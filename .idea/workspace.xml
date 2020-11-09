@@ -2,11 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cceb1cb2-77f2-4107-a902-10e88007c4dd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/signes_vitaux/new_signes_vitaux.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201105011730.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201105013345.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201105162757.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201105170727.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201106002542.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201106003658.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201106003914.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/PatientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PatientController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Abonnement.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Abonnement.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/AbonneType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/PatientType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Patient.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Patient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/_extension/footer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_extension/footer.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/_extension/sidebar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_extension/sidebar.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/patient/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patient/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/patient/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patient/new.html.twig" afterDir="false" />
@@ -159,6 +167,10 @@
       <workItem from="1604567852227" duration="19881000" />
       <workItem from="1604593405470" duration="5535000" />
       <workItem from="1604614824303" duration="12260000" />
+      <workItem from="1604725879187" duration="1237000" />
+      <workItem from="1604740312825" duration="31035000" />
+      <workItem from="1604784708195" duration="1612000" />
+      <workItem from="1604859079280" duration="18078000" />
     </task>
     <servers />
   </component>
@@ -166,6 +178,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="484" y="86" key="NewPhpClassDialog" timestamp="1604726314135">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="484" y="86" key="NewPhpClassDialog/0.0.1366.728@0.0.1366.728" timestamp="1604726314135" />
     <state x="184" y="8" key="SettingsEditor" timestamp="1604488238562">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

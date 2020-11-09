@@ -1,0 +1,63 @@
+{% include "_extension/sidebar.html.twig" %}
+
+{% block title %}Hello PatientController!{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <div class="example-wrapper">
+        {% for message in app.flashes('notice') %}
+            <button type="button" class="btn btn-success toastsDefaultSuccess">
+                {{ message }}
+            </button>
+
+        {% endfor %}
+        <h1>Nouveaux patients </h1>
+
+        {# {{ dump(patients) }} #}
+        <table class="table table-hover">
+            <thead class="bg-primary">
+            <th>#</th>
+            <th>Fiche</th>
+            <th>Nom</th>
+            <th>Postnom</th>
+            <th>Genre</th>
+            <th>Date Naissance</th>
+            <th>Actions</th>
+            <!--th>Action</th-->
+            </thead>
+            <tbody>
+            {% with { i : 1 } %}
+                {% for patient in patients %}
+
+                    <tr>
+                        <td>{{ i }}</td>
+                        <td>{{ patient.patient.numeroFiche|upper }}</td>
+                        <td>{{ patient.patient.nom }}</td>
+                        <td>{{ patient.patient.postnom }}</td>
+                        <td>{{ patient.patient.genre }}</td>
+                        <td>{{ patient.patient.dateNaissance|date('d-m-Y') }}</td>
+                        {#
+                        <td>{% if is_granted('ROLE_USER') %}
+                                <a href="{{ path('new_paiement_acte',{ 'id': patient.id}) }}">Payer fiche</a>
+                            {% else %}
+                                <a href="{{ path('new_paiement_acte',{ 'id': patient.id}) }}">Non Authorisé</a>
+                            {% endif %}
+                        </td> #}
+                        <td>
+                            <a href="{{ path('prelever',{ id: patient.patient.id, p:patient.id }) }}">Prelever</a>
+                        </td>
+                    </tr>
+                    {% set i = i+1 %}
+                {% endfor %}
+
+            {% endwith %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+

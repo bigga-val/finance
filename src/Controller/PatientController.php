@@ -23,7 +23,12 @@ class PatientController extends AbstractController
      */
     public function index(): Response
     {
-        $patients = $this->getDoctrine()->getRepository(Patient::class)->findAll();
+        $patients = $this->getDoctrine()->getRepository(Patient::class)
+            ->findBy([
+                'active'=>true
+            ], [
+                'created_at' => 'DESC'
+            ]);
         
         return $this->render('patient/index.html.twig', [
             'controller_name' => 'PatientController',
