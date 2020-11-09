@@ -59,4 +59,17 @@ class SignesVitauxRepository extends ServiceEntityRepository
         )->setParameter('id', $id);
         return $query->getResult();
     }
+
+    public function findByCabinet($cabinet)
+    {
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery(
+            '
+            SELECT s FROM App\Entity\SignesVitaux s
+            WHERE s.cabinet = :cabinet AND s.active = 1 
+            ORDER BY s.created_at ASC
+            '
+        )->setParameter('cabinet', $cabinet);
+        return $query->getResult();
+    }
 }

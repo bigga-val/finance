@@ -53,9 +53,9 @@
                                             <td>{{ signe.poids }}</td>
                                             <td>{{ signe.temperature }}</td>
                                             <td>{{ signe.tensionArterielle }}</td>
-                                            <td>{{ signe.service.designation is defined?signe.service.designation:'-' }}</td>
+                                            <td>{{ signe.cabinet.designation is defined?signe.cabinet.designation:'-' }}</td>
                                             <td>
-                                                {% if(signe.service.designation is defined) %}
+                                                {% if(signe.cabinet.designation is defined) %}
                                                     <span>ok</span>
                                                 {% else %}
                                                     <a href="{{ path('prelever', {'id': signe.patient.id, 'p': signe.id}) }}">Prelever</a>
@@ -75,7 +75,7 @@
                         {{ form_row(form.poids, {'attr':{'class':'form-control'}}) }}
                         {{ form_row(form.temperature, {'attr':{'class':'form-control'}}) }}
                         {{ form_row(form.tension_arterielle, {'attr':{'class':'form-control'}}) }}
-                        {{ form_row(form.service, {'attr':{'class':'form-control'}}) }}
+                        {{ form_row(form.cabinet, {'attr':{'class':'form-control'}}) }}
                     {{ form_end(form) }}
                 {% else %}
                     {{ "rien" }}
@@ -84,6 +84,9 @@
         </div>
     </div>
 </div>
+{% block javascripts %}
+    <script src="{{ asset('my_js/speech_to_text.js') }}"></script>
+{% endblock %}
 
 {% include "/_extension/footer.html.twig" %}
 

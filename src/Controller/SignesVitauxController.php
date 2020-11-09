@@ -26,7 +26,7 @@ class SignesVitauxController extends AbstractController
         $patients = $this->getDoctrine()->getRepository(SignesVitaux::class)
             ->findBy([
                 'active' => true,
-                'service'=>null
+                'cabinet'=>null
 
             ],
                 [
@@ -68,7 +68,8 @@ class SignesVitauxController extends AbstractController
             $signesvitaux->setPoids($form['poids']->getData());
             $signesvitaux->setTemperature($form['temperature']->getData());
             $signesvitaux->setTensionArterielle($form['tension_arterielle']->getData());
-            $signesvitaux->setService($form['service']->getData());
+            $signesvitaux->setCabinet($form['cabinet']->getData());
+            //$signesvitaux->setService($form['service']->getData());
             $signesvitaux->setCreatedAt(new \DateTime('now'));
             $signesvitaux->setCreatedBy($this->getUser());
             $signesvitaux->setPatient($patient);

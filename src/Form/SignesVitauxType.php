@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Cabinet;
 use App\Entity\Service;
 use App\Entity\SignesVitaux;
 use App\Entity\User;
@@ -34,8 +35,8 @@ class SignesVitauxType extends AbstractType
             ->add('active', HiddenType::class, [
                 'data'=>true
             ])
-            ->add('service', EntityType::class, [
-                'class'=>Service::class,
+            ->add('cabinet', EntityType::class, [
+                'class'=>Cabinet::class,
                 'choice_label'=>'designation'
             ])
             ->add('created_by', HiddenType::class, [

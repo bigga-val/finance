@@ -56,11 +56,7 @@ class SignesVitaux
      */
     private $patient;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Service::class)
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $service;
+
 
     /**
      * @ORM\Column(type="float", nullable=true)
@@ -76,6 +72,11 @@ class SignesVitaux
      * @ORM\Column(type="float", nullable=true)
      */
     private $temperature;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Cabinet::class)
+     */
+    private $cabinet;
 
 
 
@@ -147,17 +148,7 @@ class SignesVitaux
         return $this;
     }
 
-    public function getService(): ?Service
-    {
-        return $this->service;
-    }
 
-    public function setService(?Service $service): ?self
-    {
-        $this->service = $service;
-
-        return $this;
-    }
 
     public function getTensionArterielle(): ?float
     {
@@ -191,6 +182,18 @@ class SignesVitaux
     public function setTemperature(?float $temperature): self
     {
         $this->temperature = $temperature;
+
+        return $this;
+    }
+
+    public function getCabinet(): ?Cabinet
+    {
+        return $this->cabinet;
+    }
+
+    public function setCabinet(?Cabinet $cabinet): self
+    {
+        $this->cabinet = $cabinet;
 
         return $this;
     }
