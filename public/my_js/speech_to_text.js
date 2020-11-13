@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	console.log("bien")
-	var note = $('.form-control');
+	var note = $("#anamnese");
 	var note_content = '';
 	console.log(note.val())
 	try{

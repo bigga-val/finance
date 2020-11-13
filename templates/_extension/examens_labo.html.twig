@@ -1,0 +1,168 @@
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+    {% for examen in examens_labo %}
+    <li role="presentation" class="active"><a href="#home" id="{{ examen.id }}" aria-controls="home" role="tab"
+                                              data-toggle="tab">{{ examen.designation }}</a></li>
+    {% endfor %}
+    <!--<li role="presentation"><a href="#profile" aria-controls="profile" role="tab"
+                               data-toggle="tab">Parasitologie</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Biochimie
+            Clinique</a></li>
+    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab"
+                               data-toggle="tab">Sérologie</a>
+    </li>-->
+
+
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content mt-5">
+    <div role="tabpanel" class="tab-pane fade in active" id="home">
+        <div class="container">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Liste des examens home
+                    <form class="navbar-form navbar-right">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="recherche">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm">RECHERCHE</button>
+                    </form>
+                </div>
+                <div class="panel-body">
+                    <div style="height: 300px; overflow-y: scroll;">
+                        <table class="table table-bordered">
+                            <thead>
+                                <th>#</th>
+                                <th>designation</th>
+                                <th>Unité SI</th>
+                                <th>Unité Traditionnelle</th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody id="liste">
+
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="profile">
+        <div class="container">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Liste des examens
+                    <form class="navbar-form navbar-right">
+                        <div class="form-group">
+                            <input type="text" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm">RECHERCHE</button>
+                    </form>
+                </div>
+                <div class="panel-body">
+                    <div style="height: 300px; overflow-y: scroll;">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>N°</th>
+                                <th>Nom Examen</th>
+                                <th>Action</th>
+                            </tr>
+
+                            <tr>
+                                <td>1</td>
+                                <td>examen</td>
+                                <td><label>
+                                        <input id="check_examen" type="checkbox"
+                                               value="1"> Valider
+                                    </label>
+                                </td>
+                            </tr>
+
+
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="messages">
+        <div class="container">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Liste des examens
+                    <form class="navbar-form navbar-right">
+                        <div class="form-group">
+                            <input type="text" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm">RECHERCHE</button>
+                    </form>
+                </div>
+                <div class="panel-body">
+                    <div style="height: 300px; overflow-y: scroll;">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>N°</th>
+                                <th>Nom Examen</th>
+                                <th>Action</th>
+                            </tr>
+
+
+                            <tr>
+                                <td>1</td>
+                                <td>nom examen</td>
+                                <td><label>
+                                        <input id="check_examen" type="checkbox"
+                                               value="1"> Valider
+                                    </label>
+                                </td>
+                            </tr>
+
+
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="settings">
+        <div class="container">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Liste des examens
+                    <form class="navbar-form navbar-right">
+                        <div class="form-group">
+                            <input type="text" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm">RECHERCHE</button>
+                    </form>
+                </div>
+                <div class="panel-body">
+                    <div style="height: 300px; overflow: scroll;">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>N°</th>
+                                <th>Nom Examen</th>
+                                <th>Action</th>
+                            </tr>
+
+
+                            <tr>
+                                <td>1</td>
+                                <td>examen</td>
+                                <td><label>
+                                        <input id="check_examen" type="checkbox"
+                                               value="1"> Valider
+                                    </label>
+                                </td>
+                            </tr>
+
+
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

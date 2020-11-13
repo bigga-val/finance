@@ -18,7 +18,7 @@ class Antecedent
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity=SignesVitaux::class, cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=SignesVitaux::class, cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $signes_vitaux;
@@ -27,6 +27,27 @@ class Antecedent
      * @ORM\Column(type="boolean")
      */
     private $active;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $medical;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $chirurgical;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $familial;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $colateral;
+
 
     public function getId(): ?int
     {
@@ -56,4 +77,53 @@ class Antecedent
 
         return $this;
     }
+
+    public function getMedical(): ?string
+    {
+        return $this->medical;
+    }
+
+    public function setMedical(?string $medical): self
+    {
+        $this->medical = $medical;
+
+        return $this;
+    }
+
+    public function getChirurgical(): ?string
+    {
+        return $this->chirurgical;
+    }
+
+    public function setChirurgical(?string $chirurgical): self
+    {
+        $this->chirurgical = $chirurgical;
+
+        return $this;
+    }
+
+    public function getFamilial(): ?string
+    {
+        return $this->familial;
+    }
+
+    public function setFamilial(?string $familial): self
+    {
+        $this->familial = $familial;
+
+        return $this;
+    }
+
+    public function getColateral(): ?string
+    {
+        return $this->colateral;
+    }
+
+    public function setColateral(?string $colateral): self
+    {
+        $this->colateral = $colateral;
+
+        return $this;
+    }
+
 }

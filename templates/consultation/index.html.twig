@@ -1,0 +1,130 @@
+{% include "_extension/sidebar.html.twig" %}
+{% block title %}Consultation en Cabinet{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <form method="post" id="form_consultation">
+        <label for="nevrose">
+            <input type="checkbox" class="check-form" id="nevrose" name="nevrose"> Nevrosé
+            <input type="hidden" value="{{ patient }}" name="patient" id="patient">
+            <input type="hidden" value="{{ id_signes }}" name="id_signes" id="id_signes">
+        </label>
+        <div class="form-group">
+            <label for="">Plaintes Principales(anamnèses)</label>
+            <textarea class="form-control" name="anamnese" id="anamnese"></textarea>
+            <input type="button" id="btn_start_record" value="Parler">
+            <input type="button" id="btn_stop_record" value="Stop">
+            <span id="state_record">attente...</span>
+        </div>
+        <div class="form-group">
+            <label for="">Complements d'amnèses</label>
+            <textarea class="form-control" name="complement" id="complement"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="">Antécédents</label>
+            <div class="ml-5">
+                <label for="">Medical</label>
+
+                <textarea class="form-control" id="ant_medical" name="ant_medical"></textarea>
+                <label for="">Chirurgical</label>
+
+                <textarea class="form-control" id="ant_chirurgical" name="ant_chirurgical"></textarea>
+                <label for="">Familial</label>
+
+                <textarea class="form-control" id="ant_familial" name="ant_familial"></textarea>
+                <label for="">Colateral</label>
+
+                <textarea class="form-control" id="ant_colateral" name="ant_colateral"></textarea>
+                <label for="">Description</label>
+
+                <textarea class="form-control" id="ant_description" name="ant_description"></textarea>
+
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="">Examens Physiques</label>
+            <div class="ml-5">
+                <label for="">Tete et cou</label>
+
+                <textarea class="form-control" id="tete_cou" name="tete_cou"></textarea>
+                <label for="">Tronc</label>
+
+                <textarea class="form-control" id="tronc" name="tronc"></textarea>
+                <label for="">Membres</label>
+
+                <textarea class="form-control" id="membres" name="membres"></textarea>
+                <label for="">Divers</label>
+
+                <textarea class="form-control" id="divers" name="divers"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">Conclusion</label>
+
+            <textarea class="form-control" id="conclusion" name="conclusion"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="">Traitement</label>
+
+            <textarea class="form-control" id="traitement" name="traitement"></textarea>
+        </div>
+        <h2>Examens Paracliniques</h2>
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <!-- /.col -->
+                    <div class="container-fluid">
+                        <!-- /.card -->
+                        <div class="card card-primary card-outline">
+                            <div class="card-body">
+                                <ul class="nav nav-tabs" id="custom-content-above-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="custom-content-above-home-tab" data-toggle="pill" href="#custom-content-above-imagerie" role="tab" aria-controls="custom-content-above-home" aria-selected="true">Imagerie</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="custom-content-above-profile-tab" data-toggle="pill" href="#custom-content-above-laboratoire" role="tab" aria-controls="custom-content-above-profile" aria-selected="false">Laboratoire</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="custom-content-above-profile-tab" data-toggle="pill" href="#custom-content-above-ecg" role="tab" aria-controls="custom-content-above-profile" aria-selected="false">ECG</a>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content" id="custom-content-above-tabContent">
+                                    <div class="tab-pane fade show active" id="custom-content-above-imagerie" role="tabpanel" aria-labelledby="custom-content-above-home-tab">
+                                        imagerie
+                                    </div>
+                                    <div class="tab-pane fade" id="custom-content-above-laboratoire" role="tabpanel" aria-labelledby="custom-content-above-profile-tab">
+                                        {% include '_extension/examens_labo.html.twig' %}
+                                    </div>
+                                    <div class="tab-pane fade" id="custom-content-above-ecg" role="tabpanel" aria-labelledby="custom-content-above-profile-tab">
+                                        ecg
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+
+                    <!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+
+        <input type="button" class="btn btn-success" value="Enregistrer" name="btn_submit_consultation" id="btn_submit_consultation">
+    </form>
+</div>
+    {% block javascripts %}
+        <script src="{{ asset('my_js/tri_examen.js') }}"></script>
+        <script src="{{ asset('my_js/validate_form_consultation.js') }}"></script>
+        <script  src="{{ asset('my_js/speech_to_text.js') }}"></script>
+    {% endblock %}
+{% endblock %}

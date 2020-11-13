@@ -66,10 +66,18 @@ class SignesVitauxRepository extends ServiceEntityRepository
         $query = $entityManager->createQuery(
             '
             SELECT s FROM App\Entity\SignesVitaux s
-            WHERE s.cabinet = :cabinet AND s.active = 1 
-            ORDER BY s.created_at ASC
+            WHERE s.cabinet = :cabinet AND s.active = 1
+            GROUP BY s.patient 
+            ORDER BY s.created_at DESC
             '
         )->setParameter('cabinet', $cabinet);
         return $query->getResult();
+    }
+
+    public function findPatientByCabinet(){
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery('
+            SELECT 
+        ');
     }
 }

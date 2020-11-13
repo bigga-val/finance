@@ -20,6 +20,7 @@
                         <tr>
                             <th style="width: 10px">#</th>
                             <th>Date Consultation</th>
+                            <th>Nom & Postnom</th>
                             <th>Temperature</th>
                             <th>Tension Arterielle</th>
                             <th>Poids</th>
@@ -33,11 +34,12 @@
                                 <tr>
                                     <td>{{ i }}</td>
                                     <td>{{ signe.createdAt|date('d-m-Y') }}</td>
+                                    <td>{{ signe.patient.nom ~' '~ signe.patient.postnom }}</td>
                                     <td>{{ signe.poids }}</td>
                                     <td>{{ signe.temperature }}</td>
                                     <td>{{ signe.tensionArterielle }}</td>
                                     <td>
-                                        <a href="{{ path('prelever', {'id': signe.patient.id, 'p': signe.id}) }}">Consulter</a>
+                                        <a href="{{ path('consultation', {'patient': signe.patient.id, 'signes_vitaux': signe.id}) }}">Consulter</a>
                                     </td>
                                 </tr>
                                 {% set i = i+1 %}
