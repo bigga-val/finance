@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Abonnement;
+use App\Entity\Acte;
+use App\Entity\PaiementActe;
 use App\Form\AbonneType;
 use App\Form\PatientType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -28,7 +30,7 @@ class PatientController extends AbstractController
                 'active'=>true
             ], [
                 'created_at' => 'DESC'
-            ]);
+            ],1, 0);
         
         return $this->render('patient/index.html.twig', [
             'controller_name' => 'PatientController',
@@ -152,6 +154,18 @@ class PatientController extends AbstractController
                         ->setPostnom($data['postnom_patient'])
                         ->setNumeroFiche('M-'.$r.$l.random_int(0, 5000));
                     $entityManager->persist($patient);
+                    // paiement fiche
+                    $fiche = $this->getDoctrine()->getRepository(Acte::class)
+                        ->findActeFiche();
+
+                    $paiement = new PaiementActe();
+                    $paiement->setActe($fiche);
+                    $paiement->setUser($this->getUser());
+                    $paiement->setActive(true);
+                    $paiement->setPatient($patient);
+                    $paiement->setDatePaiement(new \DateTime('now'));
+                    $entityManager->persist($paiement);
+
                     $entityManager->flush();
                     $this->addFlash(
                         'succes', 'Patient enregistré avec succès'
@@ -184,6 +198,18 @@ class PatientController extends AbstractController
                         ->setSociete($data['nom_societe'])
                         ->setPatient($patient);
                     $entityManager->persist($abonnement);
+
+                    // paiement fiche
+                    $fiche = $this->getDoctrine()->getRepository(Acte::class)
+                        ->findActeFiche();
+                    $paiement = new PaiementActe();
+                    $paiement->setActe($fiche);
+                    $paiement->setUser($this->getUser());
+                    $paiement->setActive(true);
+                    $paiement->setPatient($patient);
+                    $paiement->setDatePaiement(new \DateTime('now'));
+                    $entityManager->persist($paiement);
+
                     $entityManager->flush();
                     $this->addFlash(
                         'succes', 'Patient enregistré avec succès'

@@ -8,9 +8,353 @@
 </style>
 
 <div class="example-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <div class="card-title">Patient</div>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <label>Fiche:</label>
+                            <span >{{ patient.numeroFiche|upper }}</span><br>
+                            <label>Nom & Postnom: </label>
+                            <span>{{ patient.nom|upper ~' '~ patient.postnom|upper }}</span>
+                        </div>
+                        <div>
+                            <label>Signes vitaux</label><br>
+                            <label>Poids : </label><span> {{ signes.poids }}</span>
+                            <label>T.A. : </label><span> {{ signes.tensionArterielle }}</span>
+                            <label>Tension : </label><span> {{ signes.temperature }}</span>
+                            <label>Date de Consultation: </label>
+                            <span>{{ signes.createdAt|date("d-m-Y") }}</span>
+                        </div>
 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <label for="">Plaintes Principales(Anamnèse): <i id="edit_anamnese" class="fa fa-edit text-primary" data-toggle="modal" data-target="#modal-default"></i></label>
+
+                        {% if anamnese.description is not defined or anamnese.description is empty or anamnese.description is null %}
+                    <span class="anamnese_description">R.A.S.</span>
+                        {% else %}
+                    <span id="anamnese_description">
+                        {{ anamnese.description }}
+                    </span>
+                        {% endif %}
+                </div>
+                <div class="row">
+                    <label for="">Antecedents: <i id="edit_antecedent" class="fa fa-edit text-primary" data-toggle="modal" data-target="#modal-antecedent"></i></label>
+
+                    <div class=""><br>
+                        <label>Medical : </label>
+                        <span>{{ antecedent.medical is defined?antecedent.medical:"R.A.S." }}</span><br>
+                        <label>Chirurgical : </label>
+                        <span>{{ antecedent.chirurgical is defined?antecedent.chirurgical:"R.A.S." }}</span><br>
+                        <label>Familial : </label>
+                        <span>{{ antecedent.familial is defined?antecedent.familial:"R.A.S." }}</span><br>
+                        <label>Collateral : </label>
+                        <span>{{ antecedent.colateral is defined?antecedent.colateral:"R.A.S." }}</span><br>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <label for="">Compléments d'anamnèse :<i id="edit_complement" class="fa fa-edit text-primary" data-toggle="modal" data-target="#modal-complement"></i> </label>
+                    <span>{{ complements.description is defined?complements.description:"R.A.S." }}</span>
+                </div>
+                <div class="row">
+                    <label for="">Examen Physiques: <i id="edit_exphysique" class="fa fa-edit text-primary" data-toggle="modal" data-target="#modal-exphysique"></i></label>
+                    <div><br>
+                        <label for="">Tete et Cou</label>
+                        <span>{{ physiques.teteCou is defined?physiques.teteCou:"R.A.S." }}</span><br>
+                        <label for="">Tronc</label>
+                        <span>{{ physiques.tronc is defined?physiques.tronc:"R.A.S." }}</span><br>
+                        <label for="">Membres</label>
+                        <span>{{ physiques.membres is defined?physiques.membres:"R.A.S." }}</span><br>
+                        <label for="">Divers</label>
+                        <span>{{ physiques.divers is defined?physiques.divers:"R.A.S." }}</span><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="">Examens Paracliniques</label>
+                    <table class="table table-bordered">
+                        <thead>
+                            <th>#</th>
+                            <th>Nom examen</th>
+                            <th>Unites SI</th>
+                            <th>Unites traditionnelles</th>
+                            <th>Resultat</th>
+                            <th>Date Prescription</th>
+                            <th>Date Sortie</th>
+                        </thead>
+                        <tbody>
+
+                            {% if paracliniques|length > 0 %}
+                                {% with { i: 1} %}
+                                    {% for paraclinique in paracliniques %}
+                                        <tr>
+                                            <td>{{ i }}</td>
+                                            <td>{{ paraclinique.singleExamenLabo.designation }}</td>
+                                            <td>{{ paraclinique.singleExamenLabo.uniteSi }}</td>
+                                            <td>{{ paraclinique.singleExamenLabo.uniteTraditionnelle }}</td>
+                                            <td>
+                                                {% if paraclinique.resultatExamen is not defined or paraclinique.resultatExamen is null or paraclinique.resultatExamen is empty %}
+                                                    <p class="text-danger">En cours...</p>
+                                                {% else %}
+                                                    <p>{{ paraclinique.resultatExamen }}</p>
+                                                {% endif %}
+                                            </td>
+                                            <td>{{ paraclinique.createdAt|date('d-m-Y') }}</td>
+                                            <td>{{ paraclinique.updatedAt|date('d-m-Y') }}</td>
+                                            <td></td>
+                                        </tr>
+                                    {% endfor %}
+                                {% endwith %}
+                            {% else %}
+                                    <td colspan="7" class="text-center text-danager">
+                                        <p class="text-danger">Aucun examen prescrit</p>
+                                    </td>
+                                    </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <label for="">Conclusion : <i id="edit_conclusion" class="fa fa-edit text-primary" data-toggle="modal" data-target="#modal-conclusion"></i></label>
+                    <span>{{ conclusion.description is defined?conclusion.description:"R.A.S." }}</span>
+                </div>
+                <div class="row">
+                    <label for="">Traitement : <i id="edit_traitement" class="fa fa-edit text-primary" data-toggle="modal" data-target="#modal-traitement"></i> </label>
+                        <span>{{ traitement.description is defined?traitement.description:"R.A.S." }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-    {% block javascripts %}
 
+    {#    Modal modification anamnese #}
+    <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Modifier Anamnèse</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ path("edit_anamnese") }}" method="post">
+                        <div class="form-group">
+                            <input type="hidden" name="_token" value="{{ csrf_token('modif_anamnese') }}">
+                            <textarea id="" cols="30" rows="5" name="anamnese_modif" class="input-form" id="anamnese_modif">
+                                 {{ anamnese.description is not defined?"R.A.S.":anamnese.description }}
+                            </textarea>
+                            <input type="text" name="patient" value="{{ p }}" >
+                            <input type="text" name="signes" value="{{ s }}">
+                            <input type="text" name="id" value="{{ anamnese.id is not defined?"R.A.S.:anamnese.id" }}">
+                        </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="btn_modif_anamnese" type="submit" class="btn btn-primary">Modifier</button>
+                    </form>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal  anamnese-->
+
+
+    <!-- modal  Antecedents-->
+
+    <div class="modal fade" id="modal-antecedent">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Modifier Antecedents</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ path("edit_antecedents") }}" method="post">
+                        <div class="form-group">
+                            <input type="hidden" name="_token" value="{{ csrf_token('modif_antecedent') }}">
+                            <textarea id="ant_medical" cols="30" rows="5" name="ant_medical" class="input-form">
+                                 {{ antecedent.medical }}
+                            </textarea>
+                            <textarea id="ant_chirurgical" name="ant_chirurgical" cols="30" rows="5">
+                                {{ antecedent.chirurgical }}
+                            </textarea>
+                            <textarea name="ant_familial" id="ant_familial" cols="30" rows="5">
+                                {{ antecedent.familial }}
+                            </textarea>
+                            <textarea name="ant_colateral" id="ant_colateral" cols="30" rows="5">
+                                {{ antecedent.colateral }}
+                            </textarea>
+                            <input type="text" name="patient" value="{{ p }}" >
+                            <input type="text" name="signes" value="{{ s }}">
+                            <input type="text" name="id" value="{{ antecedent.id }}">
+                        </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="btn_modif_anamnese" type="submit" class="btn btn-primary">Modifier</button>
+                    </form>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal  Antecedents-->
+    <!-- modal  Complements-->
+    <div class="modal fade" id="modal-complement">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Modifier le complement d'Anamnèse</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ path("edit_complement") }}" method="post">
+                        <div class="form-group">
+                            <input type="hidden" name="_token" value="{{ csrf_token('modif_complement') }}">
+                            <textarea id="modif_complement" cols="30" rows="5" name="modif_complement" class="input-form">
+                                 {{ complements.description }}
+                            </textarea>
+
+                            <input type="text" name="patient" value="{{ p }}" >
+                            <input type="text" name="signes" value="{{ s }}">
+                            <input type="text" name="id" value="{{ complements.id }}">
+                        </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="btn_modif_complement" type="submit" class="btn btn-primary">Modifier</button>
+                    </form>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal  Antecedents-->
+
+    <!-- modal examens physiques -->
+    <div class="modal fade" id="modal-exphysique">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Modifier les examens physiques</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ path("edit_exphysique") }}" method="post">
+                        <div class="form-group">
+                            <input type="hidden" name="_token" value="{{ csrf_token('modif_exphysique') }}">
+                            <textarea id="tete_cou" cols="30" rows="5" name="tete_cou" class="input-form">
+                                         {{ physiques.teteCou }}
+                                    </textarea>
+                            <textarea id="tronc" name="tronc" cols="30" rows="5">
+                                        {{ physiques.tronc }}
+                                    </textarea>
+                            <textarea name="membres" id="membres" cols="30" rows="5">
+                                        {{ physiques.membres }}
+                                    </textarea>
+                            <textarea name="divers" id="divers" cols="30" rows="5">
+                                        {{ physiques.divers }}
+                                    </textarea>
+                            <input type="text" name="patient" value="{{ p }}" >
+                            <input type="text" name="signes" value="{{ s }}">
+                            <input type="text" name="id" value="{{ physiques.id }}">
+                        </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="btn_modif_anamnese" type="submit" class="btn btn-primary">Modifier</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.modal examens physiques -->
+    <!-- modal conclusion -->
+    <div class="modal fade" id="modal-conclusion">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Modifier La conclusion</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ path("edit_conclusion") }}" method="post">
+                        <div class="form-group">
+                            <input type="hidden" name="_token" value="{{ csrf_token('modif_conclusion') }}">
+                            <textarea id="conclusion_modif" cols="30" rows="5" name="conclusion_modif" class="input-form">
+                                 {{ conclusion.description }}
+                            </textarea>
+                            <input type="text" name="patient" value="{{ p }}" >
+                            <input type="text" name="signes" value="{{ s }}">
+                            <input type="text" name="id" value="{{ conclusion.id }}">
+                        </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="btn_modif_conclusion" type="submit" class="btn btn-primary">Modifier</button>
+                    </form>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+        <!-- modal traitement -->
+    <div class="modal fade" id="modal-traitement">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Modifier le traitement</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ path("edit_traitement") }}" method="post">
+                        <div class="form-group">
+                            <input type="hidden" name="_token" value="{{ csrf_token('modif_traitement') }}">
+                            <textarea id="traitement_modif" cols="30" rows="5" name="traitement_modif" class="input-form">
+                                 {{ traitement.description }}
+                            </textarea>
+                            <input type="text" name="patient" value="{{ p }}" >
+                            <input type="text" name="signes" value="{{ s }}">
+                            <input type="text" name="id" value="{{ traitement.id }}">
+                        </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="btn_modif_traitement" type="submit" class="btn btn-primary">Modifier</button>
+                    </form>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal traitement -->
+
+    {% block javascripts %}
+        <script src="{# asset('my_js/modif_consultation.js') #}"></script>
     {% endblock %}
 {% endblock %}

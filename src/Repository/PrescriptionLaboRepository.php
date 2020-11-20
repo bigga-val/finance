@@ -47,4 +47,34 @@ class PrescriptionLaboRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findByPatientByConsultation($signes, $patient){
+        return $this->createQueryBuilder('p')
+            ->join("p.consultation", "c")
+            ->andWhere("c = :signes")
+            ->setParameter("signes", $signes)
+            ->andWhere("c.patient = :patient")
+            ->setParameter("patient", $patient)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findByGroupedByConsultation(){
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.active = 1')
+            ->groupBy('e.consultation')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findForOneConsultation($consultation)
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.active = 1')
+            ->andWhere('e.consultation = :consultation')
+            ->setParameter('consultation', $consultation)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

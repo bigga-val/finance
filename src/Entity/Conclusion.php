@@ -28,7 +28,7 @@ class Conclusion
     private $active;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Signesvitaux::class)
+     * @ORM\ManyToOne(targetEntity=SignesVitaux::class)
      */
     private $consultation;
 

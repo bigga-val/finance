@@ -1,0 +1,119 @@
+{% include '_extension/sidebar.html.twig' %}
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Examens Prescrits</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                        <li class="breadcrumb-item active">Examens Prescrits</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- /.col -->
+            <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover pt-lg-5">
+                    <thead>
+                    <th>#</th>
+                    <th>Date Prescription</th>
+                    <th>Resultats</th>
+                    <th>Nom & Postnom</th>
+                    <th>Age</th>
+                    <th>Action</th>
+                    </thead>
+                    <tbody>
+
+                    {% with {i: 1} %}
+                        {% for examen in examens %}
+                            <tr>
+                                <td>{{ i }}</td>
+                                <td>{{ examen.singleExamenLabo.designation }}</td>
+
+                                    {% if examen.resultatExamen is not defined or examen.resultatExamen is null or examen.resultatExamen is empty %}
+                                        <form method="post">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('save_resultat') }}">
+                                            <td>
+                                                <input type="text" name="resultat" class="input-form" id="input" required>
+                                                <input type="hidden" name="id_examen" value="{{ examen.id }}">
+                                            </td>
+                                            <td>{{ examen.singleExamenLabo.uniteSi }}</td>
+                                            <td>{{ examen.singleExamenLabo.uniteTraditionnelle }}</td>
+                                            <td>
+                                                <input type="submit" value="Enregistrer">
+                                                <!--a href="{{ path('examens_demandes', {'consultation': examen.consultation.id}) }}">Remplir</a-->
+                                            </td>
+                                        </form>
+                                    {% else %}
+                                        <td>{{ examen.resultatExamen }}</td>
+                                        <td>{{ examen.singleExamenLabo.uniteSi }}</td>
+                                        <td>{{ examen.singleExamenLabo.uniteTraditionnelle }}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-default" name="{{ examen.id }}" id="{{ examen.resultatExamen }}">
+                                                Modifier
+                                            </button>
+                                        </td>
+                                    {% endif %}
+                            </tr>
+                        {% endfor %}
+                    {% endwith %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+{#    Modal modification#}
+
+    <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Default Modal</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ path('edit_exam') }}" method="post">
+                        <div class="form-group">
+                            <input type="hidden" name="_token" value="{{ csrf_token('update_result') }}">
+                            <input type="text" name="result_modif" class="input-form" id="input_modif">
+                            <input type="text" name="id_exam" id="input_examen" >
+                            <input type="text" name="id_consultation" value="{{ consultation }}">
+                        </div>
+
+                </div>
+                <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </form>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+
+{% block javascripts %}
+    <script src="{{ asset('assets/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('my_js/save_resultat_examen.js') }}"></script>
+{% endblock %}

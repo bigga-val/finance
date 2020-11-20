@@ -78,6 +78,11 @@ class SignesVitaux
      */
     private $cabinet;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $updated_at;
+
 
 
 
@@ -194,6 +199,18 @@ class SignesVitaux
     public function setCabinet(?Cabinet $cabinet): self
     {
         $this->cabinet = $cabinet;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updated_at): self
+    {
+        $this->updated_at = $updated_at;
 
         return $this;
     }

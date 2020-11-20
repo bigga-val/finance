@@ -2,11 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Acte;
+use App\Entity\PaiementActe;
 use App\Entity\Patient;
 use App\Entity\SignesVitaux;
 use App\Form\SignesVitauxType;
 use App\Repository\PatientRepository;
 use App\Repository\SignesVitauxRepository;
+use Cassandra\Date;
 use Doctrine\ORM\EntityManagerInterface;
 use phpDocumentor\Reflection\Types\This;
 use Symfony\Component\Validator\Constraints\DateTime;
@@ -52,6 +55,8 @@ class SignesVitauxController extends AbstractController
         $form->handleRequest($request);
 
         $patient = $patientRepository->find($id);
+        $actual = new \DateTime();
+        $age = date_diff($actual, $patient->getDateNaissance());
         if($form->isSubmitted() && $form->isValid()) {
             //$form['created_at']->setData(new \DateTime('now'));
             //$signes_vitaux = $form->getData();
@@ -70,7 +75,7 @@ class SignesVitauxController extends AbstractController
             $signesvitaux->setTensionArterielle($form['tension_arterielle']->getData());
             $signesvitaux->setCabinet($form['cabinet']->getData());
             //$signesvitaux->setService($form['service']->getData());
-            $signesvitaux->setCreatedAt(new \DateTime('now'));
+            $signesvitaux->setUpdatedAt(new \DateTime('now'));
             $signesvitaux->setCreatedBy($this->getUser());
             $signesvitaux->setPatient($patient);
             $entityManager->persist($signesvitaux);
@@ -78,7 +83,8 @@ class SignesVitauxController extends AbstractController
             //return $this->redirectToRoute('patient');
             return $this->render('signes_vitaux/new_signes_vitaux.html.twig', [
                 'patient'=>$patient,
-                'signes'=>$vitaux
+                'signes'=>$vitaux,
+                'age'=>$age->y
             ]);
         }
         if(!is_null($p)){
@@ -89,17 +95,23 @@ class SignesVitauxController extends AbstractController
                 );
             }
             $patient = $patientRepository->find($id);
+            $actual = new \DateTime();
+            $age = date_diff($actual, $patient->getDateNaissance());
             return $this->render('signes_vitaux/new_signes_vitaux.html.twig',[
                 'patient'=> $patient,
                 'form'=> $form->createView(),
-                'prelever'=>$p
+                'prelever'=>$p,
+                'age'=>$age->y
             ]);
         }
         $patient = $patientRepository->find($id);
+        $actual = new \DateTime();
+        $age = date_diff($actual, $patient->getDateNaissance());
         return $this->render('signes_vitaux/new_signes_vitaux.html.twig',[
             'patient'=> $patient,
             'form'=> $form->createView(),
-            'signes'=>$vitaux
+            'signes'=>$vitaux,
+            'age'=>$age->y
         ]);
     }
 
@@ -112,19 +124,36 @@ class SignesVitauxController extends AbstractController
         $signes->setPatient($patientRepository->find($id));
         $signes->setActive(true);
         $signes->setCreatedBy($this->getUser());
+        $signes->setCreatedAt(new \DateTime('now'));
         $entityManager->persist($signes);
+        // paiement fiche
+        $fiche = $this->getDoctrine()->getRepository(Acte::class)
+            ->findActeFiche();
+
+        $paiement = new PaiementActe();
+        $paiement->setActe($fiche);
+        $paiement->setUser($this->getUser());
+        $paiement->setActive(true);
+        $paiement->setPatient($patientRepository->find($id));
+        $paiement->setDatePaiement(new \DateTime('now'));
+        $entityManager->persist($paiement);
+
         $entityManager->flush();
         $patient = $patientRepository->find($id);
         $signes = new SignesVitaux();
         $vitaux = $this->getDoctrine()->getRepository(SignesVitaux::class)
             ->findBy([
-                'active'=>true
+                'active'=>true,
+                'patient'=>$patient
             ],[
-                'created_at'=>'ASC'
+                'created_at'=>'DESC'
             ]);
+        $actual = new \DateTime();
+        $age = date_diff($actual, $patient->getDateNaissance());
         return $this->render('signes_vitaux/new_signes_vitaux.html.twig',[
             'patient'=> $patient,
-            'signes'=>$vitaux
+            'signes'=>$vitaux,
+            'age'=>$age->y
         ]);
     }
 

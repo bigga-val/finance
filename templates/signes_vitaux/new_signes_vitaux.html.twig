@@ -3,87 +3,138 @@
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
-
-<div class="example-wrapper">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <div class="card-title">Patient à Prélever</div>
-                    </div>
-                    <div class="card-body">
-                        <label>Fiche:</label>
-                        <span >{{ patient.numeroFiche|upper }}</span><br>
-                        <label>Nom & Postnom: </label>
-                        <span>{{ patient.nom|upper ~' '~ patient.postnom|upper }}</span>
-                    </div>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Patient à prelever</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">User Profile</li>
+                    </ol>
                 </div>
             </div>
-        </div>
-        {# {{ form_row(form.created_at, {'attr':{'value': DateTime(now()}}) }} #}
-        <div class="row">
+        </div><!-- /.container-fluid -->
+    </section>
 
-            <div class="col-md-12">
-                {% if signes is defined %}
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <div class="card-title">Récents Signes Vitaux</div>
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+
+                    <!-- Profile Image -->
+                        <div class="card card-primary card-outline">
+                        <div class="card-body box-profile">
+                            <div class="text-center">
+                                <img class="profile-user-img img-fluid img-circle"
+                                     src="../../dist/img/user4-128x128.jpg"
+                                     alt="User profile picture">
+                            </div>
+
+                            <h3 class="profile-username text-center">{{ patient.nom|upper ~' '~ patient.postnom|upper }}</h3>
+
+                            <p class="text-muted text-center">Age :  {{ age }} ans</p>
+
+                            <ul class="list-group list-group-unbordered mb-3">
+                                <li class="list-group-item">
+                                    <b>Fiche</b> <a class="float-right">{{ patient.numeroFiche|upper }}</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Genre</b> <a class="float-right">{{ patient.genre }}</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Date de n.</b> <a class="float-right">{{ patient.dateNaissance | date("d-m-Y") }}</a>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="card-body">
-                            <table class="table">
-                                <thead>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+
+                </div>
+                <!-- /.col -->
+                <div class="col-md-9">
+                    {% if signes is defined %}
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Prelevements precedents</h3>
+                            </div>
+                            <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example2" class="table table-bordered table-hover">
+                            <thead>
+                                    <thead>
                                     <tr>
-                                        <th style="width: 10px">#</th>
+                                        <th style="width: 10px">N°</th>
                                         <th>Date Consultation</th>
-                                        <th>Temperature</th>
+                                        <th>T°</th>
                                         <th>Tension Arterielle</th>
                                         <th>Poids</th>
                                         <th>Cabinet Traitant</th>
                                         <th>Observation</th>
                                     </tr>
-                                </thead>
-                                <tbody>
+                                    </thead>
+                                    <tbody>
 
-                                {% with { i : 1 } %}
-                                    {% for signe in signes %}
-                                        <tr>
-                                            <td>{{ i }}</td>
-                                            <td>{{ signe.createdAt|date('d-m-Y') }}</td>
-                                            <td>{{ signe.poids }}</td>
-                                            <td>{{ signe.temperature }}</td>
-                                            <td>{{ signe.tensionArterielle }}</td>
-                                            <td>{{ signe.cabinet.designation is defined?signe.cabinet.designation:'-' }}</td>
-                                            <td>
-                                                {% if(signe.cabinet.designation is defined) %}
-                                                    <span>ok</span>
-                                                {% else %}
-                                                    <a href="{{ path('prelever', {'id': signe.patient.id, 'p': signe.id}) }}">Prelever</a>
-                                                {% endif %}
-                                            </td>
-                                        </tr>
-                                        {% set i = i+1 %}
-                                    {% endfor %}
-                                {% endwith %}
-                                </tbody>
-                            </table>
+                                    {% with { i : 1 } %}
+                                        {% for signe in signes %}
+                                            <tr>
+                                                <td>{{ i }}</td>
+                                                <td>{{ signe.createdAt|date('d-m-Y') }}</td>
+                                                <td>{{ signe.poids }}</td>
+                                                <td>{{ signe.temperature }}</td>
+                                                <td>{{ signe.tensionArterielle }}</td>
+                                                <td>{{ signe.cabinet.designation is defined?signe.cabinet.designation:'-' }}</td>
+                                                <td>
+                                                    {% if(signe.cabinet.designation is defined) %}
+                                                        <span>ok</span>
+                                                    {% else %}
+                                                        <a href="{{ path('prelever', {'id': signe.patient.id, 'p': signe.id}) }}">Prelever</a>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                            {% set i = i+1 %}
+                                        {% endfor %}
+                                    {% endwith %}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
-                {% elseif prelever is defined %}
-                    {{ form_start(form) }}
-                    {{ form_errors(form) }}
-                        {{ form_row(form.poids, {'attr':{'class':'form-control'}}) }}
-                        {{ form_row(form.temperature, {'attr':{'class':'form-control'}}) }}
-                        {{ form_row(form.tension_arterielle, {'attr':{'class':'form-control'}}) }}
-                        {{ form_row(form.cabinet, {'attr':{'class':'form-control'}}) }}
-                    {{ form_end(form) }}
-                {% else %}
-                    {{ "rien" }}
-                {% endif %}
+                                <!-- /.post -->
+
+                                {% elseif prelever is defined %}
+                                <div class="card">
+                                    <div class="card-header p-2">
+                                        <h3 class="card-title">Faire un prelevement</h3>
+                                    </div><!-- /.card-header -->
+                                    <div class="card-body">
+                                        {{ form_start(form) }}
+                                        {{ form_errors(form) }}
+                                        {{ form_row(form.poids, {'attr':{'class':'form-control'}}) }}
+                                        {{ form_row(form.temperature, {'attr':{'class':'form-control'}}) }}
+                                        {{ form_row(form.tension_arterielle, {'attr':{'class':'form-control'}}) }}
+                                        {{ form_row(form.cabinet, {'attr':{'class':'form-control'}}) }}
+                                        {{ form_end(form) }}
+                                    </div>
+                                </div>
+                    {% else %}
+                        {{ "rien" }}
+                    {% endif %}
+                </div>
+                <!-- /.col -->
             </div>
-        </div>
-    </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
 </div>
+<!-- /.content-wrapper -->
 {% block javascripts %}
     <script src="{{ asset('my_js/speech_to_text.js') }}"></script>
 {% endblock %}

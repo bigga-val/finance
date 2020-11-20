@@ -115,16 +115,60 @@ class ConsultationController extends AbstractController
     public function consultations(int $patient, int $signes)
     {
         $pat = $this->getDoctrine()->getRepository(Patient::class)->find($patient);
+        if(!$pat){
+            throw $this->createNotFoundException("Aucun patient enregistré");
+        }
         $vitaux = $this->getDoctrine()->getRepository(SignesVitaux::class)->find($signes);
-        $plaintes = $this->getDoctrine()->getRepository(Anamnese::class)->findOneByConsultation($signes);
+        if(!$vitaux){
+            throw $this->createNotFoundException("Aucun enregistrement trouvé");
+        }
+        //$plaintes = $this->getDoctrine()->getRepository(Anamnese::class)->findOneByConsultation($signes);
+        $plaintes = $this->getDoctrine()->getRepository(Anamnese::class)->findOneBy([
+           'consultation'=>$vitaux,
+            'active'=>1
+        ]);
         $complements_anamnese = $this->getDoctrine()->getRepository(ComplementsAnamnese::class)->findOneBy([
             'consultation' => $signes,
             'active' => 1
         ]);
+        $antecedents = $this->getDoctrine()->getRepository(Antecedent::class)->findOneBy([
+            'signes_vitaux'=> $signes,
+            'active'=>1
+        ]);
+        $examens_physiques = $this->getDoctrine()->getRepository(ExamensPhysiques::class)->findOneBy([
+            'consultation'=>$signes,
+            'active'=>1
+        ]);
+        $conclusion = $this->getDoctrine()->getRepository(Conclusion::class)->findOneBy([
+            'consultation'=>$signes,
+            'active'=>1
+        ]);
+        $traitement = $this->getDoctrine()->getRepository(Traitement::class)->findOneBy([
+            'consultation'=>$signes,
+            'active'=>1
+        ]);
+        //$paraclinique = $this->getDoctrine()->getRepository(PrescriptionLabo::class)->findBy([
+        //    'consultation'=> $signes,
+        //    'active'=>1
+        //]);
+        $paraclinique = $this->getDoctrine()->getRepository(PrescriptionLabo::class)
+            ->findByPatientByConsultation($signes, $patient);
+
+
+
 
         return $this->render("/consultation/consultations.html.twig", [
             'patient'=> $pat,
             'signes'=> $vitaux,
+            'anamnese'=> $plaintes,
+            'complements'=> $complements_anamnese,
+            'antecedent'=> $antecedents,
+            'physiques'=>$examens_physiques,
+            'paracliniques'=>$paraclinique,
+            'conclusion'=>$conclusion,
+            'traitement'=>$traitement,
+            'p'=>$patient,
+            's'=>$signes
         ]);
     }
 }

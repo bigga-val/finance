@@ -34,10 +34,9 @@ $(document).ready(function(){
                     temp+=tbody
                 }
                 $("#liste").html(temp)
-
             },
             error: function (e){
-                console.log(e)
+                console.error(e)
             }
         })
     })

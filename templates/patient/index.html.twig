@@ -1,33 +1,56 @@
 {% include "_extension/sidebar.html.twig" %}
 
-{% block title %}Hello PatientController!{% endblock %}
-
-{% block body %}
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Liste de patients</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                        <li class="breadcrumb-item active">liste de patients</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Liste</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+
     {% for message in app.flashes('notice') %}
         <button type="button" class="btn btn-success toastsDefaultSuccess">
             {{ message }}
         </button>
 
     {% endfor %}
-    <h1>Liste des patients </h1>
 
     {# {{ dump(patients) }} #}
-    <table class="table table-hover">
-        <thead class="bg-primary">
-            <th>#</th>
+    <table id="example2" class="table table-bordered table-hover">
+        <thead>
+            <th>N°</th>
             <th>Fiche</th>
             <th>Nom</th>
-            <th>Postnom</th>
             <th>Genre</th>
-            <th>Date Naissance</th>
+            <th>Date N.</th>
             <th>Telephone</th>
-            <th>Date Enregistrement</th>
+{#            <th>Date E.</th>#}
             <th>Type</th>
             <th>Actions</th>
             <!--th>Action</th-->
@@ -38,13 +61,12 @@
 
         <tr>
             <td>{{ i }}</td>
-            <td>{{ patient.numeroFiche }}</td>
-            <td>{{ patient.nom }}</td>
-            <td>{{ patient.postnom }}</td>
+            <td>{{ patient.numeroFiche|upper }}</td>
+            <td>{{ patient.nom ~' '~ patient.postnom }}</td>
             <td>{{ patient.genre }}</td>
             <td>{{ patient.dateNaissance|date('d-m-Y') }}</td>
             <td>{{ patient.telephone }}</td>
-            <td>{{ patient.createdAt|date('d-m-Y') }}</td>
+{#            <td>{{ patient.createdAt|date('d-m-Y') }}</td>#}
             <td>{{ patient.isAbonne ? 'Abonne':'Privé' }}</td>
             {#
             <td>{% if is_granted('ROLE_USER') %}
@@ -65,6 +87,8 @@
         </tbody>
     </table>
 </div>
-{% endblock %}
-
+                </div>
+            </div>
+        </div>
+    </section>
 

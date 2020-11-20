@@ -51,10 +51,11 @@ class AnamneseRepository extends ServiceEntityRepository
     public function findOneByConsultation($consultation)
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.Consultation = :consultation')
-            ->setParameter('val', $consultation)
+            ->andWhere('a.consultation = :consultation')
+            ->setParameter('consultation', $consultation)
             ->getQuery()
             ->getOneorNullResult()
             ;
     }
+
 }

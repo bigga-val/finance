@@ -60,6 +60,6 @@ class ExamensLaboRepository extends ServiceEntityRepository
         )->setParameter('designation', $designation)
             ->getOneOrNullResult();
         return $query;
-
     }
+
 }

@@ -35,10 +35,11 @@
                                     <td>{{ i }}</td>
                                     <td>{{ signe.createdAt|date('d-m-Y') }}</td>
                                     <td>{{ signe.patient.nom ~' '~ signe.patient.postnom }}</td>
-                                    <td>{{ signe.poids }}</td>
                                     <td>{{ signe.temperature }}</td>
                                     <td>{{ signe.tensionArterielle }}</td>
+                                    <td>{{ signe.poids }}</td>
                                     <td>
+                                        <a href="{{ path('consultations', {'patient': signe.patient.id, 'signes': signe.id}) }}">Voir</a>
                                         <a href="{{ path('consultation', {'patient': signe.patient.id, 'signes_vitaux': signe.id}) }}">Consulter</a>
                                     </td>
                                 </tr>
