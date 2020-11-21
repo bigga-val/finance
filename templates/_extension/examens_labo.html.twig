@@ -1,8 +1,10 @@
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
     {% for examen in examens_labo %}
-    <li role="presentation" class="active"><a href="#home" id="{{ examen.id }}" aria-controls="home" role="tab"
-                                              data-toggle="tab">{{ examen.designation }}</a></li>
+    <li role="presentation" class="active">
+        <!--a href="#home" id="{{ examen.id }}" aria-controls="home" role="tab" data-toggle="tab">{# examen.designation #}</a-->
+        <a class="nav-link" id="{{ examen.id }}" data-toggle="tab" href="#home" aria-controls="home" aria-selected="false">{{ examen.designation }}</a>
+    </li>
     {% endfor %}
     <!--<li role="presentation"><a href="#profile" aria-controls="profile" role="tab"
                                data-toggle="tab">Parasitologie</a></li>
@@ -12,7 +14,6 @@
                                data-toggle="tab">Sérologie</a>
     </li>-->
 </ul>
-
 <!-- Tab panes -->
 <div class="tab-content mt-5">
     <div role="tabpanel" class="tab-pane fade in active" id="home">
@@ -37,9 +38,7 @@
                                 <th>Action</th>
                             </thead>
                             <tbody id="liste">
-
                             </tbody>
-
                         </table>
                     </div>
 

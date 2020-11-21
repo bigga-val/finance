@@ -2,31 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cceb1cb2-77f2-4107-a902-10e88007c4dd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/my_js/modif_consultation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/my_js/save_resultat_examen.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/examens_labo/resultat.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/my_js/tri_examen.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/my_js/tri_examen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AnamneseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AnamneseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AntecedentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AntecedentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/my_js/validate_form_consultation.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/my_js/validate_form_consultation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CabinetController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CabinetController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ConsultationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ConsultationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ExamensLaboController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ExamensLaboController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/PatientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PatientController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SignesVitauxController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SignesVitauxController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Conclusion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Conclusion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Prescription.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Prescription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/SignesVitaux.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/SignesVitaux.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/AnamneseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/AnamneseRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ExamensLaboRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ExamensLaboRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/PrescriptionLaboRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PrescriptionLaboRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/PrescriptionProduit.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/PrescriptionProduit.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/_extension/examens_labo.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_extension/examens_labo.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/cabinet/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cabinet/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/_extension/sidebar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_extension/sidebar.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/consultation/consultations.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/consultation/consultations.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/examens_labo/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/examens_labo/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/consultation/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/consultation/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/patient/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patient/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/patient/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patient/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/signes_vitaux/new_signes_vitaux.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/signes_vitaux/new_signes_vitaux.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +208,10 @@
       <workItem from="1605779601893" duration="9332000" />
       <workItem from="1605797257390" duration="4486000" />
       <workItem from="1605818957505" duration="1957000" />
-      <workItem from="1605872851461" duration="1193000" />
+      <workItem from="1605872851461" duration="17027000" />
+      <workItem from="1605912146761" duration="5433000" />
+      <workItem from="1605946752820" duration="1346000" />
+      <workItem from="1605955941385" duration="11829000" />
     </task>
     <servers />
   </component>
@@ -243,10 +235,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="447" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1604575202014" />
-    <state x="339" y="162" key="run.anything.popup" timestamp="1605819293914">
+    <state x="339" y="162" key="run.anything.popup" timestamp="1605919934715">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1605819293914" />
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1605919934715" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1605569406840">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -259,6 +251,11 @@
           <url>file://$PROJECT_DIR$/templates/patient/new_patient.html.twig</url>
           <line>56</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/consultation/consultations.html.twig</url>
+          <line>2</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

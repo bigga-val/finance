@@ -32,10 +32,7 @@ class PrescriptionProduit
      */
     private $nombre_jours;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $nombre_produit_jour;
+
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class)
@@ -82,18 +79,6 @@ class PrescriptionProduit
     public function setQuantitePrescrite(?int $quantite_prescrite): self
     {
         $this->quantite_prescrite = $quantite_prescrite;
-
-        return $this;
-    }
-
-    public function getNombreJours(): ?int
-    {
-        return $this->nombre_jours;
-    }
-
-    public function setNombreJours(?int $nombre_jours): self
-    {
-        $this->nombre_jours = $nombre_jours;
 
         return $this;
     }

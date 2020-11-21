@@ -29,7 +29,7 @@ $(document).ready(function(){
         $.each($("#check_examen:checked"), function(){
             checks.push($(this).val());
         });
-        console.log(checks)
+        //console.log(checks)
         $("#recherche").val(checks)
 
         $.ajax({
@@ -56,8 +56,10 @@ $(document).ready(function(){
             dataType: "json",
             async: true,
             success: function(data){
-                console.log(data)
-                console.log(checks)
+                location.reload();
+
+                //console.log(data)
+                //console.log(checks)
             },
             error: function(e){
                 console.error(e)

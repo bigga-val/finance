@@ -51,7 +51,9 @@
             <th>Date N.</th>
             <th>Telephone</th>
 {#            <th>Date E.</th>#}
-            <th>Type</th>
+            {% if is_granted("ROLE_GUICHET") %}
+                <th>Type</th>
+            {% endif %}
             <th>Actions</th>
             <!--th>Action</th-->
         </thead>
@@ -67,7 +69,9 @@
             <td>{{ patient.dateNaissance|date('d-m-Y') }}</td>
             <td>{{ patient.telephone }}</td>
 {#            <td>{{ patient.createdAt|date('d-m-Y') }}</td>#}
-            <td>{{ patient.isAbonne ? 'Abonne':'Privé' }}</td>
+            {% if is_granted("ROLE_GUICHET") %}
+                <td>{{ patient.isAbonne ? 'Abonne':'Privé' }}</td>
+            {% endif %}
             {#
             <td>{% if is_granted('ROLE_USER') %}
                     <a href="{{ path('new_paiement_acte',{ 'id': patient.id}) }}">Payer fiche</a>
@@ -92,3 +96,4 @@
         </div>
     </section>
 
+{% include "/_extension/footer.html.twig" %}

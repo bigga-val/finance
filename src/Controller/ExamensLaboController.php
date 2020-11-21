@@ -82,6 +82,7 @@ class ExamensLaboController extends AbstractController
             ]);
         }
         /**
+         * isGranted("ROLE_LABO")
          * @Route("/edit_examen", name="edit_exam")
          */
         public function edit_examen(Request $request, EntityManagerInterface $entityManager)
@@ -100,5 +101,6 @@ class ExamensLaboController extends AbstractController
                         array("consultation"=> $data["id_consultation"]));
                 }
             }
+            return $this->redirectToRoute("examens_labo");
         }
 }

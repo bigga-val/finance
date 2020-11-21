@@ -6,9 +6,7 @@ $(document).ready(function(){
         let index = tab.index(this)
         let texte = tab.eq(index).text()
         let id = tab.eq(index).attr('id')
-        alert(id);
-
-
+        //alert(id);
         //alert(checks)
         $.ajax({
             type: "POST",
@@ -22,10 +20,11 @@ $(document).ready(function(){
                 console.log(data)
                 let tbody = ""
                 let temp = ""
-
+                let cpt = 0
                 for(i = 0; i < data.length; i++){
+                    cpt=i+1
                     tbody="<tr>"
-                        tbody+="<td></td>"
+                        tbody+="<td>"+cpt+"</td>"
                         tbody+="<td>"+data[i]['designation']+"</td>"
                         tbody+="<td>"+data[i]['unite_si']+"</td>"
                         tbody+="<td>"+data[i]['unite_traditionnelle']+"</td>"

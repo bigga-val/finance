@@ -13,6 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CabinetController extends AbstractController
 {
     /**
+     * isGranted("ROLE_CABINET")
      * @Route("/cabinet", name="cabinet")
      */
     public function index(): Response

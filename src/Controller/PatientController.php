@@ -30,7 +30,7 @@ class PatientController extends AbstractController
                 'active'=>true
             ], [
                 'created_at' => 'DESC'
-            ],1, 0);
+            ]);
         
         return $this->render('patient/index.html.twig', [
             'controller_name' => 'PatientController',

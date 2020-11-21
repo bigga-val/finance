@@ -1,21 +1,321 @@
 {% include "_extension/sidebar.html.twig" %}
 {% block title %}Consultation en Cabinet{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Consultaion du patient</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                        <li class="breadcrumb-item active">Consultations patient</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
 
-<div class="example-wrapper">
-    <div class="container">
+    <!-- Main content -->
+    <section class="content">
         <div class="row">
-            <div class="col-md-12">
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <div class="card-title">Patient</div>
+                    <div class="col-md-3">
+                        <div class="card">
+                        <!-- Profile Image -->
+                            <div class="card-body box-profile">
+                                <div class="text-center">
+                                    <img class="profile-user-img img-fluid img-circle"
+                                         src="../../dist/img/user4-128x128.jpg"
+                                         alt="User profile picture">
+                                </div>
+                                <h3 class="profile-username text-center">{{ patient.nom|upper ~' '~ patient.postnom|upper }}</h3>
+
+                                <p class="text-muted text-center">Age : ans</p>
+
+                                <ul class="list-group list-group-unbordered mb-3">
+                                    <li class="list-group-item">
+                                        <b>Fiche</b> <a class="float-right">{{ patient.numeroFiche|upper }}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Genre</b> <a class="float-right">{{ patient.genre }}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Date de n.</b> <a class="float-right">{{ patient.dateNaissance | date("d-m-Y") }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
                     </div>
+                    <!-- /.col -->
+            <!-- /.col -->
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header p-2">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Timeline</a></li>
+                        </ul>
+                    </div><!-- /.card-header -->
                     <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane" id="activity">
+                                <!-- Post -->
+                                <div class="post">
+                                    <div class="user-block">
+                                        <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
+                                        <span class="username">
+                          <a href="#">Jonathan Burke Jr.</a>
+                          <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+                        </span>
+                                        <span class="description">Shared publicly - 7:30 PM today</span>
+                                    </div>
+                                    <!-- /.user-block -->
+                                    <p>
+                                        Lorem ipsum represents a long-held tradition for designers,
+                                        typographers and the like. Some people hate it and argue for
+                                        its demise, but others ignore the hate as they create awesome
+                                        tools to help create filler text for everyone from bacon lovers
+                                        to Charlie Sheen fans.
+                                    </p>
+
+                                    <p>
+                                        <!--a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i> Share</a-->
+                                        <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
+                                        <span class="float-right">
+                                          <a href="#" class="link-black text-sm">
+                                            <i class="far fa-comments mr-1"></i> Comments (5)
+                                          </a>
+                                        </span>
+                                    </p>
+
+                                    <input class="form-control form-control-sm" type="text" placeholder="Type a comment">
+                                </div>
+                                <!-- /.post -->
+
+                                <!-- Post -->
+                                <div class="post clearfix">
+                                    <div class="user-block">
+                                        <img class="img-circle img-bordered-sm" src="../../dist/img/user7-128x128.jpg" alt="User Image">
+                                        <span class="username">
+                          <a href="#">Sarah Ross</a>
+                          <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+                        </span>
+                                        <span class="description">Sent you a message - 3 days ago</span>
+                                    </div>
+                                    <!-- /.user-block -->
+                                    <p>
+                                        Lorem ipsum represents a long-held tradition for designers,
+                                        typographers and the like. Some people hate it and argue for
+                                        its demise, but others ignore the hate as they create awesome
+                                        tools to help create filler text for everyone from bacon lovers
+                                        to Charlie Sheen fans.
+                                    </p>
+
+                                    <form class="form-horizontal">
+                                        <div class="input-group input-group-sm mb-0">
+                                            <input class="form-control form-control-sm" placeholder="Response">
+                                            <div class="input-group-append">
+                                                <button type="submit" class="btn btn-danger">Send</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- /.post -->
+
+                                <!-- Post -->
+                                <div class="post">
+                                    <div class="user-block">
+                                        <img class="img-circle img-bordered-sm" src="../../dist/img/user6-128x128.jpg" alt="User Image">
+                                        <span class="username">
+                          <a href="#">Adam Jones</a>
+                          <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+                        </span>
+                                        <span class="description">Posted 5 photos - 5 days ago</span>
+                                    </div>
+                                    <!-- /.user-block -->
+                                    <div class="row mb-3">
+                                        <div class="col-sm-6">
+                                            <img class="img-fluid" src="../../dist/img/photo1.png" alt="Photo">
+                                        </div>
+                                        <!-- /.col -->
+                                        <div class="col-sm-6">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <img class="img-fluid mb-3" src="../../dist/img/photo2.png" alt="Photo">
+                                                    <img class="img-fluid" src="../../dist/img/photo3.jpg" alt="Photo">
+                                                </div>
+                                                <!-- /.col -->
+                                                <div class="col-sm-6">
+                                                    <img class="img-fluid mb-3" src="../../dist/img/photo4.jpg" alt="Photo">
+                                                    <img class="img-fluid" src="../../dist/img/photo1.png" alt="Photo">
+                                                </div>
+                                                <!-- /.col -->
+                                            </div>
+                                            <!-- /.row -->
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <!-- /.row -->
+
+                                    <p>
+                                        <a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i> Share</a>
+                                        <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
+                                        <span class="float-right">
+                          <a href="#" class="link-black text-sm">
+                            <i class="far fa-comments mr-1"></i> Comments (5)
+                          </a>
+                        </span>
+                                    </p>
+
+                                    <input class="form-control form-control-sm" type="text" placeholder="Type a comment">
+                                </div>
+                                <!-- /.post -->
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="active tab-pane" id="timeline">
+                                <!-- The timeline -->
+                                <div class="timeline timeline-inverse">
+                                    <!-- timeline time label -->
+                                    <div class="time-label">
+                        <span class="bg-danger">
+                          {{ signes.createdAt|date("d.m.Y") }}
+                        </span>
+                                    </div>
+                                    <!-- /.timeline-label -->
+                                    <!-- timeline item -->
+                                    <div>
+                                        <i class="fas fa-envelope bg-primary"></i>
+                                        <div class="timeline-item">
+                                            <!--span class="time"><i class="far fa-clock"></i> 12:05</span-->
+
+                                            <h3 class="timeline-header"><a href="!#">Plaintes Principales(Anamnèse)</a></h3>
+
+                                            <div class="timeline-body">
+                                                {% if anamnese.description is not defined or anamnese.description is empty or anamnese.description is null %}
+                                                    <span class="anamnese_description">R.A.S.</span>
+                                                {% else %}
+                                                    <span id="anamnese_description">
+                                                {{ anamnese.description|capitalize }}
+                                                    </span>
+                                                {% endif %}
+                                            </div>
+                                            <div class="timeline-footer">
+                                                <!--a href="#" role="button" class="btn btn-primary btn-sm" id="edit_anamnese"><i id="edit_anamnese" class="fa fa-edit text-primary" data-toggle="modal" data-target="#modal-default">Editer</i></a-->
+                                                <i class="btn btn-primary btn-sm" id="edit_anamnese" data-toggle="modal" data-target="#modal-default">Modifier</i>
+                                                <!--a href="#" class="btn btn-danger btn-sm">Delete</a-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- END timeline item -->
+                                    <!-- timeline item -->
+                                    <div>
+                                        <i class="fas fa-envelope bg-primary"></i>
+                                        <div class="timeline-item">
+                                            <!--span class="time"><i class="far fa-clock"></i> 12:05</span-->
+
+                                            <h3 class="timeline-header"><a href="!#">Compléments d'anamnèse</a></h3>
+
+                                            <div class="timeline-body">
+                                                {{ complements.description is defined?complements.description:"R.A.S." }}
+                                            </div>
+                                            <div class="timeline-footer">
+
+                                                <i class="btn btn-primary btn-sm" id="edit_anamnese" data-toggle="modal" data-target="#modal-complement">Modifier</i>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- END timeline item -->
+                                    <!-- timeline item -->
+                                    <div>
+                                        <i class="fas fa-envelope bg-primary"></i>
+                                        <div class="timeline-item">
+                                            <!--span class="time"><i class="far fa-clock"></i> 12:05</span-->
+                                            <h3 class="timeline-header"><a href="!#">Conclusion</a></h3>
+                                            <div class="timeline-body">
+                                                {{ conclusion.description is defined?description:"R.A.S." }}
+                                            </div>
+                                            <div class="timeline-footer">
+                                                <i class="btn btn-primary btn-sm" id="edit_anamnese" data-toggle="modal" data-target="#modal-antecedent">Modifier</i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- END timeline item -->
+                                    <!-- timeline item -->
+                                    <div>
+                                        <i class="fas fa-envelope bg-primary"></i>
+                                        <div class="timeline-item">
+                                            <!--span class="time"><i class="far fa-clock"></i> 12:05</span-->
+                                            <h3 class="timeline-header"><a href="!#">Examens Physiques</a></h3>
+                                            <div class="timeline-body">
+                                                <div><br>
+                                                    <label for="">Tete et Cou</label>
+                                                    <span>{{ physiques.teteCou is defined?physiques.teteCou:"R.A.S." }}</span><br>
+                                                    <label for="">Tronc</label>
+                                                    <span>{{ physiques.tronc is defined?physiques.tronc:"R.A.S." }}</span><br>
+                                                    <label for="">Membres</label>
+                                                    <span>{{ physiques.membres is defined?physiques.membres:"R.A.S." }}</span><br>
+                                                    <label for="">Divers</label>
+                                                    <span>{{ physiques.divers is defined?physiques.divers:"R.A.S." }}</span><br>
+                                                </div>
+                                            </div>
+                                            <div class="timeline-footer">
+                                                <i class="btn btn-primary btn-sm" id="edit_exphysique" data-toggle="modal" data-target="#modal-exphysique">Modifier</i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- END timeline item -->
+                                    <!-- timeline item -->
+                                    <div>
+                                        <i class="fas fa-envelope bg-primary"></i>
+                                        <div class="timeline-item">
+                                            <!--span class="time"><i class="far fa-clock"></i> 12:05</span-->
+                                            <h3 class="timeline-header"><a href="!#">Conclusion</a></h3>
+                                            <div class="timeline-body">
+                                                <span>{{ conclusion.description is defined?conclusion.description:"R.A.S." }}</span>
+                                            </div>
+                                            <div class="timeline-footer">
+                                                <i class="btn btn-primary btn-sm" id="edit_conclusion" data-toggle="modal" data-target="#modal-conclusion">Modifier</i>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- END timeline item -->
+                                    <!-- timeline item -->
+                                    <div>
+                                        <i class="fas fa-envelope bg-primary"></i>
+                                        <div class="timeline-item">
+                                            <!--span class="time"><i class="far fa-clock"></i> 12:05</span-->
+                                            <h3 class="timeline-header"><a href="!#">Traitement</a></h3>
+                                            <div class="timeline-body">
+
+                                                <span>{{ traitement.description is defined?traitement.description:"R.A.S." }}</span>
+                                            </div>
+                                            <div class="timeline-footer">
+                                                <i class="btn btn-primary btn-sm" id="edit_traitement" data-toggle="modal" data-target="#modal-traitement">Modifier</i>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- END timeline item -->
+                            </div>
+                            <!-- /.tab-pane -->
+
+
+                        </div>
+                        <!-- /.tab-content -->
+                    </div><!-- /.card-body -->
+                </div>
+                <!-- /.nav-tabs-custom -->
+            </div>
+            <!-- /.col -->{#
+
+                    <div class="card-body">
+
                         <div>
                             <label>Fiche:</label>
                             <span >{{ patient.numeroFiche|upper }}</span><br>
@@ -30,13 +330,13 @@
                             <label>Date de Consultation: </label>
                             <span>{{ signes.createdAt|date("d-m-Y") }}</span>
                         </div>
-
                     </div>
+                    #}
                 </div>
-            </div>
-        </div>
+
         <div class="row">
             <div class="col-md-12">
+                {#
                 <div class="row">
                     <label for="">Plaintes Principales(Anamnèse): <i id="edit_anamnese" class="fa fa-edit text-primary" data-toggle="modal" data-target="#modal-default"></i></label>
 
@@ -48,6 +348,8 @@
                     </span>
                         {% endif %}
                 </div>
+                #}
+                {#
                 <div class="row">
                     <label for="">Antecedents: <i id="edit_antecedent" class="fa fa-edit text-primary" data-toggle="modal" data-target="#modal-antecedent"></i></label>
 
@@ -61,12 +363,15 @@
                         <label>Collateral : </label>
                         <span>{{ antecedent.colateral is defined?antecedent.colateral:"R.A.S." }}</span><br>
                     </div>
-
                 </div>
+                #}
+                {#
                 <div class="row">
                     <label for="">Compléments d'anamnèse :<i id="edit_complement" class="fa fa-edit text-primary" data-toggle="modal" data-target="#modal-complement"></i> </label>
                     <span>{{ complements.description is defined?complements.description:"R.A.S." }}</span>
                 </div>
+                #}
+                {#
                 <div class="row">
                     <label for="">Examen Physiques: <i id="edit_exphysique" class="fa fa-edit text-primary" data-toggle="modal" data-target="#modal-exphysique"></i></label>
                     <div><br>
@@ -80,8 +385,26 @@
                         <span>{{ physiques.divers is defined?physiques.divers:"R.A.S." }}</span><br>
                     </div>
                 </div>
+                #}
+                {#
                 <div class="row">
+                    <label for="">Conclusion : <i id="edit_conclusion" class="fa fa-edit text-primary" data-toggle="modal" data-target="#modal-conclusion"></i></label>
+                    <span>{{ conclusion.description is defined?conclusion.description:"R.A.S." }}</span>
+                </div>
+                <div class="row">
+                    <label for="">Traitement : <i id="edit_traitement" class="fa fa-edit text-primary" data-toggle="modal" data-target="#modal-traitement"></i> </label>
+                    <span>{{ traitement.description is defined?traitement.description:"R.A.S." }}</span>
+                </div>
+                #}
+                <div class="row">
+                    <div class="col-12">
                     <label for="">Examens Paracliniques</label>
+                    <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Examens prescrits</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive p-0" style="height: 300px;">
                     <table class="table table-bordered">
                         <thead>
                             <th>#</th>
@@ -124,18 +447,11 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="row">
-                    <label for="">Conclusion : <i id="edit_conclusion" class="fa fa-edit text-primary" data-toggle="modal" data-target="#modal-conclusion"></i></label>
-                    <span>{{ conclusion.description is defined?conclusion.description:"R.A.S." }}</span>
-                </div>
-                <div class="row">
-                    <label for="">Traitement : <i id="edit_traitement" class="fa fa-edit text-primary" data-toggle="modal" data-target="#modal-traitement"></i> </label>
-                        <span>{{ traitement.description is defined?traitement.description:"R.A.S." }}</span>
-                </div>
             </div>
         </div>
     </div>
-</div>
+</section>
+
 
     {#    Modal modification anamnese #}
     <div class="modal fade" id="modal-default">
@@ -156,7 +472,7 @@
                             </textarea>
                             <input type="text" name="patient" value="{{ p }}" >
                             <input type="text" name="signes" value="{{ s }}">
-                            <input type="text" name="id" value="{{ anamnese.id is not defined?"R.A.S.:anamnese.id" }}">
+                            <input type="text" name="id" value="{{ anamnese.id is not defined?"R.A.S.":anamnese.id }}">
                         </div>
                 </div>
                 <div class="modal-footer justify-content-between">
@@ -188,20 +504,46 @@
                         <div class="form-group">
                             <input type="hidden" name="_token" value="{{ csrf_token('modif_antecedent') }}">
                             <textarea id="ant_medical" cols="30" rows="5" name="ant_medical" class="input-form">
-                                 {{ antecedent.medical }}
+                                {% if(antecedent.medical is not defined or antecedent.medical is empty or antecedent.medical is null) %}
+                                    "R.A.S."
+                                {% else %}
+                                    {{ antecedent.medical }}
+                                {% endif %}
                             </textarea>
                             <textarea id="ant_chirurgical" name="ant_chirurgical" cols="30" rows="5">
-                                {{ antecedent.chirurgical }}
+                                {% if antecedent.chirurgical is not defined or antecedent.chirurgical is empty or antecedent.chirurgical is null %}
+                                    "R.A.S."
+                                {% else %}
+                                    {{ antecedent.chirurgical }}
+                                {% endif %}
+
                             </textarea>
                             <textarea name="ant_familial" id="ant_familial" cols="30" rows="5">
-                                {{ antecedent.familial }}
+                                {% if antecedent.familial is not defined or antecedent.familial is empty or antecedent.familial is null %}
+                                        "R.A.S."
+                                {% else %}
+                                    {{ antecedent.familial }}
+                                {% endif %}
                             </textarea>
                             <textarea name="ant_colateral" id="ant_colateral" cols="30" rows="5">
-                                {{ antecedent.colateral }}
+
+                                {% if antecedent.colateral is not defined or antecedent.colateral is empty or antecedent.colateral is null %}
+                                    "R.A.S."
+                                {% else %}
+                                    {{ antecedent.colateral }}
+                                {% endif %}
+
                             </textarea>
                             <input type="text" name="patient" value="{{ p }}" >
                             <input type="text" name="signes" value="{{ s }}">
-                            <input type="text" name="id" value="{{ antecedent.id }}">
+                            <input type="text" name="id" value="
+                                                        {% if antecedent.id is not defined or antecedent.id is null %}
+                                                            {{ null }}
+                                                        {% else %}
+                                                            {{ antecedent.id }}
+                                                        {% endif %}
+
+                                                                ">
                         </div>
                 </div>
                 <div class="modal-footer justify-content-between">
@@ -230,12 +572,22 @@
                         <div class="form-group">
                             <input type="hidden" name="_token" value="{{ csrf_token('modif_complement') }}">
                             <textarea id="modif_complement" cols="30" rows="5" name="modif_complement" class="input-form">
-                                 {{ complements.description }}
+
+                                {% if complements.description is not defined or complements.description is empty or complements.description is null %}
+                                    "R.A.S."
+                                {% else %}
+                                    {{ complements.description }}
+                                {% endif %}
                             </textarea>
 
                             <input type="text" name="patient" value="{{ p }}" >
                             <input type="text" name="signes" value="{{ s }}">
-                            <input type="text" name="id" value="{{ complements.id }}">
+                            <input type="text" name="id" value="
+                            {% if complements.id is not defined or complements.id is null %}
+                                {{ null }}
+                            {% else %}
+                                {{ complements.id }}
+                            {% endif %}
                         </div>
                 </div>
                 <div class="modal-footer justify-content-between">
@@ -265,20 +617,45 @@
                         <div class="form-group">
                             <input type="hidden" name="_token" value="{{ csrf_token('modif_exphysique') }}">
                             <textarea id="tete_cou" cols="30" rows="5" name="tete_cou" class="input-form">
-                                         {{ physiques.teteCou }}
+
+                                {% if physiques.teteCou is not defined or physiques.teteCou is empty or physiques.teteCou is null %}
+                                    "R.A.S."
+                                {% else %}
+                                    {{ physiques.teteCou }}
+                                {% endif %}
+
                                     </textarea>
                             <textarea id="tronc" name="tronc" cols="30" rows="5">
-                                        {{ physiques.tronc }}
+                                {% if physiques.tronc is not defined or physiques.tronc is empty or physiques.tronc is null %}
+                                    "R.A.S."
+                                {% else %}
+                                    {{ physiques.tronc }}
+                                {% endif %}
                                     </textarea>
                             <textarea name="membres" id="membres" cols="30" rows="5">
-                                        {{ physiques.membres }}
+                                {% if physiques.membres is not defined or physiques.membres is empty or physiques.membres is null %}
+                                    "R.A.S."
+                                {% else %}
+                                    {{ physiques.membres }}
+                                {% endif %}
                                     </textarea>
                             <textarea name="divers" id="divers" cols="30" rows="5">
-                                        {{ physiques.divers }}
+                                {% if physiques.divers is not defined or physiques.divers is empty or physiques.divers is null %}
+                                    "R.A.S."
+                                {% else %}
+                                    {{ physiques.divers }}
+                                {% endif %}
                                     </textarea>
                             <input type="text" name="patient" value="{{ p }}" >
                             <input type="text" name="signes" value="{{ s }}">
-                            <input type="text" name="id" value="{{ physiques.id }}">
+                            <input type="text" name="id" value="
+
+                                {% if physiques.id is not defined or physiques.id is null %}
+                                    {{ null }}
+                                {% else %}
+                                    {{ physiques.id }}
+                                {% endif %}
+                                ">
                         </div>
                 </div>
                 <div class="modal-footer justify-content-between">
@@ -305,11 +682,11 @@
                         <div class="form-group">
                             <input type="hidden" name="_token" value="{{ csrf_token('modif_conclusion') }}">
                             <textarea id="conclusion_modif" cols="30" rows="5" name="conclusion_modif" class="input-form">
-                                 {{ conclusion.description }}
+                                 {{ conclusion.description is defined?conclusion.description:"R.A.S." }}
                             </textarea>
                             <input type="text" name="patient" value="{{ p }}" >
                             <input type="text" name="signes" value="{{ s }}">
-                            <input type="text" name="id" value="{{ conclusion.id }}">
+                            <input type="text" name="id" value="{{ conclusion.id is defined?conclusion.id:null }}">
                         </div>
                 </div>
                 <div class="modal-footer justify-content-between">
@@ -337,11 +714,11 @@
                         <div class="form-group">
                             <input type="hidden" name="_token" value="{{ csrf_token('modif_traitement') }}">
                             <textarea id="traitement_modif" cols="30" rows="5" name="traitement_modif" class="input-form">
-                                 {{ traitement.description }}
+                                 {{ traitement.description is defined?traitement.description:null }}
                             </textarea>
                             <input type="text" name="patient" value="{{ p }}" >
                             <input type="text" name="signes" value="{{ s }}">
-                            <input type="text" name="id" value="{{ traitement.id }}">
+                            <input type="text" name="id" value="{{ traitement.id is defined?traitement.id:null }}">
                         </div>
                 </div>
                 <div class="modal-footer justify-content-between">
@@ -357,4 +734,3 @@
     {% block javascripts %}
         <script src="{# asset('my_js/modif_consultation.js') #}"></script>
     {% endblock %}
-{% endblock %}

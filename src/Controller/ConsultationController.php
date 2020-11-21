@@ -127,6 +127,10 @@ class ConsultationController extends AbstractController
            'consultation'=>$vitaux,
             'active'=>1
         ]);
+        if(!$plaintes){
+
+
+        }
         $complements_anamnese = $this->getDoctrine()->getRepository(ComplementsAnamnese::class)->findOneBy([
             'consultation' => $signes,
             'active' => 1
